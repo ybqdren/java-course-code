@@ -1,4 +1,4 @@
-package com.github.ybqdren;
+package com.github.ybqdren.escape;
 
 /**
  * Wen(Joan) Zhao <withzhaowen@126.com>
