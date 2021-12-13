@@ -49,6 +49,7 @@ public class MyClassVistor extends ClassVisitor {
 
         if(!"<init>".equals(name) && mv!=null){
             // 为这样的方法增加记录方法执行时间的功能 ？
+            mv = new MyMethodVisitor(mv);    // 功能追加
 
         }
 
@@ -79,7 +80,6 @@ public class MyClassVistor extends ClassVisitor {
          */
         @Override
         public void visitInsn(int opcode) {
-            super.visitInsn(opcode);
 
             // 操作码一定要大于等于IRETURN 并且也不能达到RETURN
             if(opcode >= Opcodes.IRETURN &&
@@ -107,6 +107,8 @@ public class MyClassVistor extends ClassVisitor {
                     mv.visitLabel(l8);
                     mv.visitLineNumber(21, l8);
             }
+
+            super.visitInsn(opcode);
         }
     }
 }
