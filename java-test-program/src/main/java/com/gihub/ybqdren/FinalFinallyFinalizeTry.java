@@ -1,5 +1,8 @@
 package com.gihub.ybqdren;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,5 +24,16 @@ public class FinalFinallyFinalizeTry {
         strList.add("World");
 //        List<String> unmodifiableStrList = List.of("Hello","world");    // List.of jdk 9 新增
 //        unmodifiableStrList.add("again");
+    }
+
+    // try-with-resource  java-9 引入
+    private void tryWithResourceTest(String fileName,String str) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        try (writer) {
+            writer.write(str); // do something with the file we've opened
+        }
+        catch(IOException e) {
+            // handle the exception
+        }
     }
 }
