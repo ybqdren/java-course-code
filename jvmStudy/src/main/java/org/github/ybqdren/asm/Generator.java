@@ -30,7 +30,7 @@ public class Generator {
         byte[] data = cw.toByteArray();
 
         // 输出
-        File f = new File("target/classes/org/github/ybqdren/asm/TestClass.class");
+        File f = new File("target/classes/org/github/ybqdren/asm/TestClass.class");  // target/
         FileOutputStream fos = new FileOutputStream(f);
         fos.write(data);
         fos.close();
