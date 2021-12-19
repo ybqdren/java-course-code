@@ -11,4 +11,8 @@ public interface API {
 
     public void t1();
 
+    public default void t3(){
+        System.out.println("now in api in t3()");
+    }
+
 }
