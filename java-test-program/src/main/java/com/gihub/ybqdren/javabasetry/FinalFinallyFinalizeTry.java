@@ -1,4 +1,4 @@
-package com.gihub.ybqdren;
+package com.gihub.ybqdren.javabasetry;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -27,7 +27,7 @@ public class FinalFinallyFinalizeTry {
     }
 
     // try-with-resource  java-9 引入
-    private void tryWithResourceTest(String fileName,String str) throws IOException {
+/*    private void tryWithResourceTest(String fileName,String str) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         try (writer) {
             writer.write(str); // do something with the file we've opened
@@ -35,5 +35,5 @@ public class FinalFinallyFinalizeTry {
         catch(IOException e) {
             // handle the exception
         }
-    }
+    }*/
 }
