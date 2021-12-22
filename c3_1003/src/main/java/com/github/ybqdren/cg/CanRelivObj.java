@@ -3,7 +3,7 @@ package com.github.ybqdren.cg;
 /**
  * @author Wen(Joan) Zhao
  * @version v1.0
- * @description r1 示例 4-1  (p69~p71)
+ * @description 示例 4-1  (p69~p71)
  *
  *
  * @output
@@ -16,6 +16,10 @@ public class CanRelivObj {
     public static CanRelivObj obj;
 
     // finalize() 是一个非常糟糕的模式，所以不推荐使用这个方法来释放资源   p71
+    // 原因：
+    //      - finalize() 函数有可能发生引用外泄，在无意中复活对象
+    //      - finalize() 的调用时机是不明确的，所以无法进行手动控制 推荐使用 try-catch-finally进行资源的释放
+
     @Override
     protected void finalize() throws Throwable {
         super.finalize();

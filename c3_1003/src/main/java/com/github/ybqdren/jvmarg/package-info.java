@@ -2,7 +2,7 @@
  * @author Wen(Joan) Zhao
  * @version v1.0
  * @description
- * r1  第三章 常用 Java 虚拟机参数
+ * 第三章 常用 Java 虚拟机参数
  *
  * 本章涉及的主要知识点有：
  *      - 跟踪 jvm gc 和 类加载
