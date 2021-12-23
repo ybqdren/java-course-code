@@ -7,7 +7,10 @@ import java.lang.ref.SoftReference;
  * @author Wen(Joan) Zhao
  * @version v1.0
  * @description
+ * 每一个软引用都可以附带一个引用队列，当对象的可达性状态发生改变时（由可达变为不可达），
+ * 软引用对象都会进入引用队列。通过这个引用队列，可以跟踪对象的回收情况。
  **/
+
 public class SoftRefQ {
     public static class User{
         public int id;
