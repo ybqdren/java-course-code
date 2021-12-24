@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.github.ybqdre.AppTest" time="0.05" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="E:\MyResponse\java-course-code\c5_1005\target\test-classes;E:\MyResponse\java-course-code\c5_1005\target\classes;G:\Language Proctice\java\maven\repository\junit\junit\4.11\junit-4.11.jar;G:\Language Proctice\java\maven\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="D:\java\java_versions\java_17\bin"/>
+    <property name="sun.java.command" value="C:\Users\erbin\AppData\Local\Temp\surefire17015742948998616300\surefirebooter542685489464716447.jar C:\Users\erbin\AppData\Local\Temp\surefire17015742948998616300 2021-12-24T11-19-32_796-jvmRun1 surefire7590341321456792597tmp surefire_06128902825440020867tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="E:\MyResponse\java-course-code\c5_1005\target\test-classes;E:\MyResponse\java-course-code\c5_1005\target\classes;G:\Language Proctice\java\maven\repository\junit\junit\4.11\junit-4.11.jar;G:\Language Proctice\java\maven\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\erbin"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-10-19"/>
+    <property name="java.home" value="D:\java\java_versions\java_17"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="E:\MyResponse\java-course-code\c5_1005"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\erbin\AppData\Local\Temp\surefire17015742948998616300\surefirebooter542685489464716447.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
+    <property name="user.name" value="erbin"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="G:\Language Proctice\java\maven\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\erbin\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2021.3"/>
+    <property name="java.version" value="17.0.1"/>
+    <property name="user.dir" value="E:\MyResponse\java-course-code\c5_1005"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\java\java_versions\java_17\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\java\java_versions\EcilipseFoundation\jdk-17.0.0.35_hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;D:\VMware Workstation\bin\;D:\java\jdk\bin;D:\java\JRE\bin;D:\ernv\gradle\gradle-6.6.1-all\gradle-6.6.1\bin;C:\sqlite3;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;d:\python\Scripts;D:\爬虫所需软件\数据库\;D:\Git\cmd;D:\bin;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;D:\MySQL\MySQL Server 5.5\bin;D:\Python;C:\Program Files\Terminus\Terminus.exe;D:\tools\myBlog\node-v12.1.0-win-x64;D:\tools\myBlog\node-v12.1.0-win-x64\node-global;D:\tools\myBlog\node-v12.1.0-win-x64\node-global\node_modules\hexo\node_modules\.bin;D:\ernv\java\apache-maven-3.8.4-bin\apache-maven-3.8.4\bin;D:\ernv\lib\opencv\Opencv3.4.2\Opencv3.4.2\WindowSoft\opencv\build\x64\vc15\bin;E:\otherenv\bigdata\hadoop-3.1.0\bin;D:\tools\SciTools\bin\pc-win64;G:\Language Proctice\Goworks;C:\Program Files (x86)\Google\Chrome\Application;E:\otherenv\bigdata\hadoop-3.1.0\bin;C:\Program Files\Calibre2\;D:\tools\Graphviz\bin;C:\Users\erbin\.cargo\bin;C:\Users\erbin\AppData\Local\Microsoft\WindowsApps;D:\ProGramTool\byTool\PyCharm 2018.3.2\bin;D:\爬虫所需软件\数据库\mysql-5.6.43-winx64\bin;D:\tools\Programs\Fiddler;D:\IDE\JetBrains\IDEA 2020.1\IntelliJ IDEA 2020.1\bin;C:\Users\erbin\AppData\Local\Pandoc\;D:\go\idea\GoLand 2020.1\bin;D:\tools\PhpStorm 2018.3.5\bin;;%GoLand%;D:\tools\Microsoft VS Code\bin;D:\IDE\JetBrains\IntelliJ IDEA 2021.3\bin;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.1+12-LTS-39"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="G:\Language Proctice\java\maven\repository"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="shouldAnswerWithTrue" classname="com.github.ybqdre.AppTest" time="0.001"/>
+</testsuite>
