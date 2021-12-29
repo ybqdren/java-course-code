@@ -6,5 +6,6 @@ package com.github.ybqdre.observer;
  * @package com.github.ybqdre.observer
  * @description
  **/
-public class AbstractFans {
+public abstract class AbstractFans {
+    abstract void acceptMsg(String msg);
 }
