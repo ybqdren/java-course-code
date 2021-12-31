@@ -1,5 +1,6 @@
 package org.github.ybqdren.api;
 
+import org.github.ybqdren.common.annotation.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +21,11 @@ public class HomeController {
     public String hello(){
         System.out.println("hello ~");
         return "hello ~";
+    }
+
+    @Logger(log = "我来了")
+    @GetMapping("/getuser")
+    public String getUser(){
+        return "user user";
     }
 }

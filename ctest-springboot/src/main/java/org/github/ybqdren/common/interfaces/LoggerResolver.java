@@ -2,6 +2,7 @@ package org.github.ybqdren.common.interfaces;
 
 import org.github.ybqdren.common.annotation.LogPermissionMeta;
 import org.github.ybqdren.common.annotation.Logger;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @package org.github.ybqdren.common.interfaces
  * @description  行为日志记录
  **/
+
 public interface LoggerResolver {
     /**
      * handle
