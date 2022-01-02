@@ -1,17 +1,16 @@
 package org.github.ybqdren.common.interceptor;
 
-import org.github.ybqdren.common.annotation.LogPermissionMeta;
+import org.github.ybqdren.common.annotation.PermissionMeta;
 import org.github.ybqdren.common.annotation.Logger;
 import org.github.ybqdren.common.interfaces.LoggerResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.util.Optional;
 
 /**
  * @author Wen(Joan) Zhao
@@ -19,7 +18,9 @@ import java.util.Optional;
  * @package org.github.ybqdren.common.interfaces
  * @description
  **/
-public class LogIntereptor implements AsyncHandlerInterceptor {
+
+
+public class LogInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private LoggerResolver loggerResolver;
@@ -41,7 +42,7 @@ public class LogIntereptor implements AsyncHandlerInterceptor {
             Method method = handlerMethod.getMethod();
             Logger logger = method.getAnnotation(Logger.class);
             if(logger != null){
-                LogPermissionMeta meta = method.getAnnotation(LogPermissionMeta.class);
+                PermissionMeta meta = method.getAnnotation(PermissionMeta.class);
                 // 从 request 、response 和 modelAndView 中解析 template 和外部 peoperties
                 loggerResolver.handle(meta,logger,request,response);
             }

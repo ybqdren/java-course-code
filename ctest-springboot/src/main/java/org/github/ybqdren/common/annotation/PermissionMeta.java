@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface LogPermissionMeta {
+public @interface PermissionMeta {
     String value();
 
     String permission() default "";

@@ -1,7 +1,12 @@
 package org.github.ybqdren;
 
+import org.github.ybqdren.config.MyConfiguration;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
 
 /**
  * @author Wen(Joan) Zhao
@@ -10,7 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description
  **/
 
-@SpringBootApplication
+@Configuration(value = "org.github.ybqdren.config.MyConfiguration")
+@SpringBootApplication //(scanBasePackages = {"org.github.ybqdren"})
 public class SpringBootStartApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootStartApplication.class);

@@ -1,8 +1,7 @@
 package org.github.ybqdren.common.interfaces;
 
-import org.github.ybqdren.common.annotation.LogPermissionMeta;
+import org.github.ybqdren.common.annotation.PermissionMeta;
 import org.github.ybqdren.common.annotation.Logger;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,5 +21,5 @@ public interface LoggerResolver {
      * @param request 请求
      * @param response 响应
      */
-    void handle(LogPermissionMeta meta, Logger logger, HttpServletRequest request, HttpServletResponse response);
+    void handle(PermissionMeta meta, Logger logger, HttpServletRequest request, HttpServletResponse response);
 }
