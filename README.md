@@ -16,6 +16,8 @@ c5_1005     [大厂学院] 设计模式
 
 c6_1006     [图书] 《从企业级开发到云原生微服务：Spring Boot 实战》  by 汪云飞 等
 
+c7_1007     [慕课网] Spring Security+OAuth2精讲
+
 ...
 
 cblog_test_2022 博客学习代码收集
