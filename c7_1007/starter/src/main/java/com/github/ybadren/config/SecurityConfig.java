@@ -24,19 +24,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests(req -> req.mvcMatchers("/api/greeting").authenticated());*/
 
           // 函数式配置
-          http.authorizeRequests(req -> req.antMatchers("/api/**").authenticated())
+/*          http.authorizeRequests(req -> req.antMatchers("/api/**").authenticated())
                   .formLogin(form -> form.disable())
                   .httpBasic(Customizer.withDefaults())
-                  .csrf(csrf -> csrf.disable());
+                  .csrf(csrf -> csrf.disable());*/
 
           // 链式配置
-/*          http
+          http
                   .authorizeRequests()
                   .antMatchers("/api/**").hasRole("USER")
                   .anyRequest().authenticated()
                   .and()   // 返回一个配置类
                   .formLogin().loginPage("/login").usernameParameter("username1").and()
-                  .httpBasic().realmName("BA");*/
+                  .httpBasic().realmName("BA");
 
     }
 
