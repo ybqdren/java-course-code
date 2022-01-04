@@ -82,7 +82,6 @@ public class PermissionMetaCollector implements BeanPostProcessor {
         }
 
         // get metainfo
-
         String methodName = method.getName();
 
         String className = method.getDeclaringClass().getName();
