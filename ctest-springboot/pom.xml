@@ -28,6 +28,7 @@
     <jasbin-version>1.21.0</jasbin-version>
     <jwt.version>0.10.7</jwt.version>
     <guava.version>29.0-jre</guava.version>
+    <mysql.version>8.0.26</mysql.version>
   </properties>
 
   <dependencies>
@@ -102,6 +103,12 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>${guava.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
     </dependency>
 
   </dependencies>
