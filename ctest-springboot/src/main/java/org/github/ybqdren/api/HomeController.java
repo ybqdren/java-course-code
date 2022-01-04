@@ -1,6 +1,7 @@
 package org.github.ybqdren.api;
 
 import org.github.ybqdren.common.annotation.Logger;
+import org.github.ybqdren.common.annotation.PermissionMeta;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,4 +29,11 @@ public class HomeController {
     public String getUser(){
         return "user user";
     }
+
+    @PermissionMeta(value = "hahaha")
+    @GetMapping("/permission")
+    public String isPermission(){
+        return "没有权限吗";
+    }
+
 }

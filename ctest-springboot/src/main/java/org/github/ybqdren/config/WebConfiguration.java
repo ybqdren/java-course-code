@@ -1,18 +1,12 @@
 package org.github.ybqdren.config;
 
+import org.github.ybqdren.common.bean.PermissionMetaCollector;
 import org.github.ybqdren.common.interceptor.LogInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.List;
 
 /**
  * Spring MVC 配置
@@ -25,6 +19,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private LogInterceptor logInterceptor;
+
+    @Bean
+    public PermissionMetaCollector addPermissionMetaCollector(){
+        return new PermissionMetaCollector();
+    }
 
 
     @Override
