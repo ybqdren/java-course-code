@@ -38,7 +38,7 @@ public class PermissionMetaCollector implements BeanPostProcessor {
         System.out.println("开始提取注解");
 //        System.out.println("bean :"+bean+"~~"+beanName);
 
-        Controller controllerAnnotation = AnnotationUtils.findAnnotation(bean.getClass());
+        Controller controllerAnnotation = AnnotationUtils.findAnnotation(bean.getClass(),Controller.class);
         if(controllerAnnotation == null){ return bean; }
 
         // 获取 springboot 中所有 bean 对象
