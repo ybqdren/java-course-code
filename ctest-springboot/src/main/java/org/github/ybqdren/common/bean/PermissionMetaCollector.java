@@ -35,7 +35,7 @@ public class PermissionMetaCollector implements BeanPostProcessor {
     // 扫描注解信息，并提取
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("开始提取注解");
+//        System.out.println("开始提取注解");
 //        System.out.println("bean :"+bean+"~~"+beanName);
 
         Controller controllerAnnotation = AnnotationUtils.findAnnotation(bean.getClass(),Controller.class);
@@ -45,9 +45,12 @@ public class PermissionMetaCollector implements BeanPostProcessor {
         Method[] metheds = ReflectionUtils.getAllDeclaredMethods(bean.getClass());
 
         for(Method method : metheds){
+
             PermissionMeta permissionMeta = AnnotationUtils.findAnnotation(method,PermissionMeta.class);
 
             if(permissionMeta != null && permissionMeta.mount()){
+                System.out.println("找到一个 PermissionMeta 注解: " + permissionMeta.value());
+
                 String permission = StringUtils.isEmpty(permissionMeta.value())
                                             ? permissionMeta.permission() : permissionMeta.value();
                 UserLevel level = AnnotationUtil.findRequired(method.getAnnotations());
