@@ -2,6 +2,7 @@ package org.github.ybqdren.api;
 
 import org.github.ybqdren.common.annotation.Logger;
 import org.github.ybqdren.common.annotation.PermissionMeta;
+import org.github.ybqdren.common.util.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,4 +37,10 @@ public class HomeController {
         return "没有权限吗";
     }
 
+    // 获取当前用户名称
+    @Logger(log = "查看当前用户信息")
+    @GetMapping("/getCurUser")
+    public String getCurUser(){
+        return SecurityUtils.getCurrentUsername();
+    }
 }

@@ -3,6 +3,7 @@ package org.github.ybqdren.common.interceptor;
 import org.github.ybqdren.common.annotation.PermissionMeta;
 import org.github.ybqdren.common.annotation.Logger;
 import org.github.ybqdren.common.interfaces.LoggerResolver;
+import org.github.ybqdren.common.util.SecurityUtils;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,9 @@ public class LoggerImpl implements LoggerResolver {
     @Override
     public void handle(PermissionMeta meta, Logger logger, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("来到了 LoggerResolver 的实现类 ~");
-        System.out.println(logger.log() + " ~ " +
+        System.out.println(SecurityUtils.getCurrentUsername() +
+                           "   "  +
+                           logger.log() + " ~ " +
                            request.getMethod() +" ~ " +
                            request.getRequestURI() + " ~ " +
                            response.getStatus()

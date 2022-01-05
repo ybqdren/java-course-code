@@ -1,5 +1,9 @@
 package org.github.ybqdren.common.util;
 
+import org.github.ybqdren.common.exception.BadRequestException;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -16,6 +20,25 @@ public class SecurityUtils {
      * @return
      */
     public static UserDetails getCurrentUser(){
-        UserDetailsService userDetailsService = SpringContextH
+        // 在 IOC 容器中取出 UserDetailsService 的实例对象
+        UserDetailsService userDetailsService = SpringContextHolder.getBean(UserDetailsService.class);
+        return userDetailsService.loadUserByUsername(getCurrentUsername());
+    }
+
+
+    public static String getCurrentUsername(){
+        // 调用 spring security 的 api 来获取当前的登录情况
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null) {
+            throw new BadRequestException(HttpStatus.UNAUTHORIZED, "当前登录状态过期");
+        }
+
+        if(authentication.getPrincipal() instanceof UserDetails){
+            UserDetails userDetails = (UserDetails)  authentication.getPrincipal();
+            return userDetails.getUsername();
+        }
+
+        throw new BadRequestException(HttpStatus.UNAUTHORIZED, "找不到当前登录的信息");
     }
 }

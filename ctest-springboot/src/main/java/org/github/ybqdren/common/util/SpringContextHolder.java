@@ -5,7 +5,8 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import javax.security.auth.callback.Callback;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Wen(Joan) Zhao
@@ -17,11 +18,26 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
 
     private static ApplicationContext applicationContext = null;
 
-    private static final List<Callback>
+    private static final List<CallBack> CALL_BACKS = new ArrayList<>();
 
     private static boolean addCallback = true;
 
 
+    public static <T> T getBean(Class<T> requiredType){
+        if (applicationContext == null) {
+            throw new IllegalStateException("applicaitonContext属性未注入, 请在applicationContext" +
+                    ".xml中定义SpringContextHolder或在SpringBoot启动类中注册SpringContextHolder.");
+        }
+
+        return (T) applicationContext.getBean(requiredType);
+    }
+
+    /**
+     * 从静态变量 applicaitonContext 中取 Bean，强制转型为所赋值对象的类型
+     * @param name
+     * @param <T>
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public static <T> T  getBean(String name){
         if (applicationContext == null) {
@@ -29,7 +45,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
                     ".xml中定义SpringContextHolder或在SpringBoot启动类中注册SpringContextHolder.");
         }
 
-        return applicationContext.getBean()
+        return (T) applicationContext.getBean(name);
 
 
     }
@@ -47,10 +63,14 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
 
         SpringContextHolder.applicationContext = applicationContext;
         if(addCallback){
-            for(Callback callback : SpringContextHolder){
-
+            for(CallBack callback : SpringContextHolder.CALL_BACKS){
+                callback.excutor();
             }
+
+            CALL_BACKS.clear();
         }
+
+        SpringContextHolder.addCallback = true;
 
     }
 }
