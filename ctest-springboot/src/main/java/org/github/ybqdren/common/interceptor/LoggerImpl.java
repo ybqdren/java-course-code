@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Wen(Joan) Zhao
  * @time 2021/12/30 17:19
  * @package org.github.ybqdren.common.interceptor
- * @description
+ * @description  {@link LoggerImpl} >> {@link LoggerResolver} -> {@link LogInterceptor}
+ *                      ----- ({@link Logger}  and {@link PermissionMeta})
  **/
 
 @Component
