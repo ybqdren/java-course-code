@@ -18,6 +18,8 @@ c6_1006     [图书] 《从企业级开发到云原生微服务：Spring Boot �
 
 c7_1007     [慕课网] Spring Security+OAuth2精讲
 
+c8_1008     [开课吧] Java 企业级分布式架构师 010 期
+
 ...
 
 cblog_test_2022 博客学习代码收集
