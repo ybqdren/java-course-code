@@ -3,8 +3,8 @@ java 各种练习、学习代码收集
 
 ----
 
+c1_1001     [慕课网] [Java实操避坑指南：业务代码-整合框架-存储-缓存常见错误详解](https://coding.imooc.com/class/460.html)
 
-c1_1001     [慕课网] [Java实操避坑指南：业务代码-整合框架-存储-缓存常见错误详解]（https://coding.imooc.com/class/460.html）
 
 c2_1002     [慕课网] [理论+实战 构建完整JVM知识体系](https://coding.imooc.com/class/429.html)
 
