@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.bean;
 
+import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -61,4 +62,23 @@ public class MyBean {
         person.setSex(1);
         return person;
     }*/
+
+
+
+    // 找一份糊口工作
+    @Bean(value = "糊口工作")
+    public MyWork getOneJob(){
+        MyWork job = new MyWork();
+        job.setSalary(1000);
+        job.setWorkName("搬砖");
+        return job;
+    }
+
+    @Bean(value = "好工作")
+    public MyWork getGoodOneJob(){
+        MyWork job = new MyWork();
+        job.setWorkName("编程");
+        job.setSalary(10000000);
+        return job;
+    }
 }

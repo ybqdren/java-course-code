@@ -3,6 +3,7 @@ package com.github.ybqdren.baseannotation.api;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import com.github.ybqdren.baseannotation.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.stereotype.Repository;
@@ -44,10 +45,38 @@ public class InfoResource {
     @Autowired
     InfoService infoService;
 
+
+    /**
+     注解 {@value }：
+        - 从配置文件 properties 或者是 yml 文件中根据 Key 取 Value 值
+        - 给基本类型和 String 类型注入值
+        - 可以使用占位符获取属性文件（properties 或者是 yml）文件中的值
+     */
+    @Value("${ybqdren.name}")
+    private String myName;
+
+    @Value("${ybqdren.years}")
+    private String myYears;
+
     // 随便抓一个人
     @GetMapping("/person")
     public String getAPersonByRange(){
         return infoService.getAPersonByRange().toString();
+    }
+
+    // 找一份好工作
+    @GetMapping("/job")
+    public String findAJob(){ return infoService.getAJob().toString(); }
+
+    // 俺是谁？
+    @GetMapping("/me")
+    public String whoAmI(){
+
+        System.out.println(myName + "~~");
+        System.out.println(myYears + "~~");
+
+        return "我是 " + myName +
+                ", 我今年 "+ myYears + "岁";
     }
 
 }

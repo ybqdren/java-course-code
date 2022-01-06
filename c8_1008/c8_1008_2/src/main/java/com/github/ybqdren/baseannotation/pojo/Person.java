@@ -3,6 +3,8 @@ package com.github.ybqdren.baseannotation.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import org.springframework.lang.Nullable;
 
 /**
  * @author Wen(Joan) Zhao
@@ -16,9 +18,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Person {
+    @NonNull
     private String name;
     private Integer sex;  // 1 女 2 男
+
+    @NonNull
     private String id;
+
+    private MyWork work;
 
     public Person(String name, String id) {
         this.name = name;

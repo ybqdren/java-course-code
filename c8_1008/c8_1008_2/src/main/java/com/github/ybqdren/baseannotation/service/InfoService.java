@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.service;
 
+import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 
 import java.util.Optional;
@@ -15,4 +16,7 @@ import java.util.Optional;
 public interface InfoService {
     // 随便获取一个人
     public Optional<Person> getAPersonByRange();
+
+    // 找一份工作糊口
+    public Optional<MyWork> getAJob();
 }

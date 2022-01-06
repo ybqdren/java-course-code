@@ -41,6 +41,14 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>-->
 
+    <!-- jsr 330 ，可支持 @inject -->
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
