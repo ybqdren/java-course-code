@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Optional;
@@ -21,7 +23,7 @@ import java.util.Optional;
 
 
 /**
- 注解 {@link Autowired} 、注解 {@link javax.annotation.Resource} 、注解 {@link Inject} 区别：
+ 注解 {@link Autowired} 、注解 {@link Resource} 、注解 {@link Inject} 区别：
      - @Autowired 是 Spring 自带的，@Inject 是 JSR330 规范实现的，@Resource 是 JSR250 规范实现的，需要使用不同的包
      - @Autowired 、@Inject 用法基本一致，不同的是 @Autowired 有一个 request 属性
      - @Autowired、@Inject 是默认按照 <类型> 匹配的，@Resource 是按照 <名称> 匹配的
@@ -51,8 +53,9 @@ public class InfoServiceImpl implements InfoService {
 
     /**
      注解 {@link Inject}：
+         - 是一个 DI 注解 （即依赖注入）
          - Inject 是 JSR330 中的规范， 要使用 @Inject 注解，需要引入 javax.inject 包
-         - 根据类型进行自动装配，如果需要名称进行装配，则需要配合 {@link javax.inject.Named} 使用
+         - 根据类型进行自动装配，如果需要名称进行装配，则需要配合 {@link Named} 使用
          - 可以作用在变量、setter 方法、构造函数上
 
      */

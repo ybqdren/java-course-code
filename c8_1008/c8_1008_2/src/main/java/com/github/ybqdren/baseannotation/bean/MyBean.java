@@ -18,11 +18,28 @@ import java.util.Optional;
 
 /**
  注解 {@link Component} ：把资源交给 Spring 来管理，相当于是使用 xml 配置 Spring 时，在 xml 中配置了一个 bean
+    - 是一个 IOC 注解 （创建对象）
     - value  指定 bean 的 id ，如果不指定 value 属性，默认 bean 的 id 是当前类的类名，首字母小写
+
 
  生命周期相关注解（待练习）
     注解 @PostConstruct
+       - 是Java规范JSR-250引入的注解，定义了对象的创建工作
+       - 被用来修饰一个非静态的void()方法。被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行，init()方法之前执行。
+
+       @ ref
+           - https://www.cnblogs.com/maggieq8324/p/15188775.html Java - @PostConstruct注解 - 依赖注入完成后初始化
+
+
     注解 @PreDestroy
+ -    - 是Java规范JSR-250引入的注解，定义了对象的销毁工作
+      - 被@PreDestroy修饰的方法会在服务器卸载Servlet的时候运行，并且只会被服务器调用一次，类似于Servlet的destroy()方法。
+      -被@PreDestroy修饰的方法会在destroy()方法之后运行，在Servlet被彻底卸载之前。执行顺序如下所示：
+                                    调用destroy()方法->@PreDestroy->destroy()方法->bean销毁。
+
+  @ref
+    - https://blog.csdn.net/qq_40093255/article/details/115730657  @PostConstruct与@PreDestroy使用
+
  */
 
 
@@ -45,6 +62,12 @@ public class MyBean {
         person.setName("张小明");
         person.setSex(1);
         return person;
+    }
+
+
+    @Bean(name = "person_1")
+    public Person getAPersonByOther_2(){
+        return new Person();
     }
 
     /**

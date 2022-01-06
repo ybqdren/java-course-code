@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
+
 
 /**
  * @author Wen(Joan) Zhao
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
  下面 3 个注解都是针对 {@link org.springframework.stereotype.Component} 注解的衍生，他们的作用和属性都是一摸一样的。
  不过他们可以提供更加的明确的语义化
 
+ 三个注解都属于 IOC 注解 （创建对象）
+
  注解 {@link Controller}   一般用于表现层的注解，如果想要构建一个 restful 风格的接口，可以直接使用 {@link RestController} 注解
  注解 {@link Service}      一般用于业务层的注解
  注解 {@link Repository}   一般用于持久层的注解
@@ -33,6 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/info")
 @RestController
 public class InfoResource {
+
 
     /**
      注解 {@link Autowired}：
@@ -48,6 +53,7 @@ public class InfoResource {
 
     /**
      注解 {@value }：
+        - 是一个 DI 注解 （即依赖注入）
         - 从配置文件 properties 或者是 yml 文件中根据 Key 取 Value 值
         - 给基本类型和 String 类型注入值
         - 可以使用占位符获取属性文件（properties 或者是 yml）文件中的值
