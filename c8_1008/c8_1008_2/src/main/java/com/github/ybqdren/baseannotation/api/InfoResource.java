@@ -79,4 +79,17 @@ public class InfoResource {
                 ", 我今年 "+ myYears + "岁";
     }
 
+
+    // 和下面的路由共有一个 单例对象，有给对象赋值操作的，先调用
+    @GetMapping("/single/1")
+    public String getASinglePersonHaveValue(){
+        return infoService.getOneSinglePersonHaveValue().toString();
+    }
+
+    // 没有给对象赋值，后调用
+    @GetMapping("/single/2")
+    public String getASinglePersonNoValue(){
+        return infoService.getOneSinglePerson().toString();
+    }
+
 }

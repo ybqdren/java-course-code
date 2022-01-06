@@ -5,6 +5,7 @@ import com.github.ybqdren.baseannotation.pojo.Person;
 import com.github.ybqdren.baseannotation.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -59,6 +60,10 @@ public class InfoServiceImpl implements InfoService {
     @Inject
     MyWork oneJob;
 
+    @Qualifier(value = "singleBean")
+    @Autowired
+    Person singleWoman;
+
 
     @Override
     public Optional<Person> getAPersonByRange() {
@@ -70,5 +75,17 @@ public class InfoServiceImpl implements InfoService {
         return Optional.ofNullable(oneJob);
     }
 
+    @Override
+    public Optional<Person> getOneSinglePerson() {
+        return Optional.ofNullable(singleWoman);
+    }
 
+    @Override
+    public Optional<Person> getOneSinglePersonHaveValue() {
+        if(singleWoman == null){return Optional.empty();}
+
+        singleWoman.setSex(1);
+        singleWoman.setName("Alex");
+        return Optional.of(singleWoman);
+    }
 }

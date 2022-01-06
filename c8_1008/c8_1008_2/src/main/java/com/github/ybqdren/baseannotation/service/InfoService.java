@@ -19,4 +19,10 @@ public interface InfoService {
 
     // 找一份工作糊口
     public Optional<MyWork> getAJob();
+
+    // 获取一个单例对象人 直接返回
+    public Optional<Person> getOneSinglePerson();
+
+    // 获取一个单例对象人 有赋值操作
+    public Optional<Person> getOneSinglePersonHaveValue();
 }

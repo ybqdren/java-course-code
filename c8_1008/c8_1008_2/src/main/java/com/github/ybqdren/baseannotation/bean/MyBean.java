@@ -3,9 +3,11 @@ package com.github.ybqdren.baseannotation.bean;
 import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author Wen(Joan) Zhao
@@ -64,6 +66,20 @@ public class MyBean {
     }*/
 
 
+    /**
+     注解 {@link Scope} 改变 Bean 作用范围的注解
+        - value ： 指定范围的值，取值：[singleton | prototype | request | session | globalsession]
+
+        默认是： singleton，即 Spring 中 Bean 的默认创建方式就是单例
+
+     */
+    // 单例获取一个对象
+    @Scope(value = "singleton")
+    @Bean(name = "singleBean")
+    public Person getOneSinglePerson(){
+        return new Person();
+    }
+
 
     // 找一份糊口工作
     @Bean(value = "糊口工作")
@@ -81,4 +97,6 @@ public class MyBean {
         job.setSalary(10000000);
         return job;
     }
+
+
 }
