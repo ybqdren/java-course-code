@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.api;
 
+import com.github.ybqdren.baseannotation.pojo.Cat;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import com.github.ybqdren.baseannotation.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 
 /**
@@ -98,4 +100,10 @@ public class InfoResource {
         return infoService.getOneSinglePerson().toString();
     }
 
+    @GetMapping("/cat")
+    public String getACutCat(){
+        Optional<Cat> cat = infoService.getOneCutCat();
+        String tmpStr = cat.toString();
+        return tmpStr;
+    }
 }

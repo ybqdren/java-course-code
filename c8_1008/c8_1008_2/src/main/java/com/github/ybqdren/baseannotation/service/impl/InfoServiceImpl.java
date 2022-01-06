@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.service.impl;
 
+import com.github.ybqdren.baseannotation.pojo.Cat;
 import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import com.github.ybqdren.baseannotation.service.InfoService;
@@ -67,6 +68,9 @@ public class InfoServiceImpl implements InfoService {
     @Autowired
     Person singleWoman;
 
+    @Autowired
+    Cat cat;
+
 
     @Override
     public Optional<Person> getAPersonByRange() {
@@ -90,5 +94,12 @@ public class InfoServiceImpl implements InfoService {
         singleWoman.setSex(1);
         singleWoman.setName("Alex");
         return Optional.of(singleWoman);
+    }
+
+    @Override
+    public Optional<Cat> getOneCutCat() {
+        cat.setYears(2);
+        cat.setNikaName("fugui");
+        return Optional.of(cat);
     }
 }

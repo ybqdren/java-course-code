@@ -1,6 +1,7 @@
 package ybqdren.test;
 
 import com.github.ybqdren.baseannotation.pojo.Cat;
+import org.junit.Test;
 
 /**
  * @author Wen(Joan) Zhao
@@ -10,7 +11,7 @@ import com.github.ybqdren.baseannotation.pojo.Cat;
  **/
 public class AnnotationTest {
 
-    @tes
+    @Test
     public void testPostConstructAndPreDestroy(){
         Cat cat = new Cat("miaomiao");
         cat.setYears(2);

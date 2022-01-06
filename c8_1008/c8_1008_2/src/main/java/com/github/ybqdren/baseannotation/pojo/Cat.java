@@ -17,8 +17,11 @@ public class Cat {
     private Integer sex;
     private Integer years;
 
+    public Cat() {
+    }
 
     public Cat(String nikaName) {
+        System.out.println("正在初始化一只小猫咪");
         this.nikaName = nikaName;
     }
 
@@ -62,5 +65,7 @@ public class Cat {
         System.out.println("猫咪睡觉了");
     }
 
-
+    public void destroy() {
+        System.out.println("cat destroy 方法执行");
+    }
 }

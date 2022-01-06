@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.bean;
 
+import com.github.ybqdren.baseannotation.pojo.Cat;
 import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,8 @@ import java.util.Optional;
     注解 @PostConstruct
        - 是Java规范JSR-250引入的注解，定义了对象的创建工作
        - 被用来修饰一个非静态的void()方法。被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行，init()方法之前执行。
+                < w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 608 ms
+                猫咪起床了 >
 
        @ ref
            - https://www.cnblogs.com/maggieq8324/p/15188775.html Java - @PostConstruct注解 - 依赖注入完成后初始化
@@ -127,5 +130,8 @@ public class MyBean {
         return job;
     }
 
-
+    @Bean
+    public Cat getACat(){
+        return new Cat();
+    }
 }

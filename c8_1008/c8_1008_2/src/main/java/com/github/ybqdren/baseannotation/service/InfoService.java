@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.service;
 
+import com.github.ybqdren.baseannotation.pojo.Cat;
 import com.github.ybqdren.baseannotation.pojo.MyWork;
 import com.github.ybqdren.baseannotation.pojo.Person;
 
@@ -25,4 +26,8 @@ public interface InfoService {
 
     // 获取一个单例对象人 有赋值操作
     public Optional<Person> getOneSinglePersonHaveValue();
+
+
+    // 获取一只小猫咪
+    public Optional<Cat> getOneCutCat();
 }
