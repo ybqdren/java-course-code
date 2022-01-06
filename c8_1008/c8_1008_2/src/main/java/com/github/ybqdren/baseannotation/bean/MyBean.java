@@ -19,7 +19,13 @@ import java.util.Optional;
 /**
  注解 {@link Component} ：把资源交给 Spring 来管理，相当于是使用 xml 配置 Spring 时，在 xml 中配置了一个 bean
     - value  指定 bean 的 id ，如果不指定 value 属性，默认 bean 的 id 是当前类的类名，首字母小写
+
+ 生命周期相关注解（待练习）
+    注解 @PostConstruct
+    注解 @PreDestroy
  */
+
+
 
 @Component
 public class MyBean {
