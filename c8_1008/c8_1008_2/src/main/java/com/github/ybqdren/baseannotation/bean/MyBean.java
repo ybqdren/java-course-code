@@ -50,6 +50,11 @@ import java.util.Optional;
 @Component
 public class MyBean {
 
+    /**
+     * 注解 {@link Bean} ：
+     *          - 相当于 ...
+     * @return
+     */
     @Bean
     public Person getAPerson(){
         Person person = new Person();
