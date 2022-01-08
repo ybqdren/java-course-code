@@ -51,13 +51,13 @@ c12_1012    [图书] [《labuladong的算法小抄》](https://github.com/ybqdre
 
 ...
 
-cblog_test_2022 博客学习代码收集
+cblog_test_2022 [博客学习代码收集](https://github.com/ybqdren/java-course-code/tree/main/cblog_test_2022)
 
-ctest   平常各种代码 demo 大杂烩（草稿）
+ctest   [平常各种代码 demo 大杂烩（草稿）](https://github.com/ybqdren/java-course-code/tree/main/ctest)
 
-ctest-springboot spring boot 练习代码片段
+ctest-springboot [spring boot 练习代码片段](https://github.com/ybqdren/java-course-code/tree/main/ctest-springboot)
 
-ctest-spring_security spring security 练习代码片段
+ctest-spring_security [spring security 练习代码片段](https://github.com/ybqdren/java-course-code/tree/main/ctest-spring_security)
 
 
 
