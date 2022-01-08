@@ -1,4 +1,4 @@
-package com.github.ybqdren.chapter1.dynamicprogramming;
+package com.github.ybqdren.chapter1.dynamicprogramming.p509;
 
 /**
  * @author Wen(Joan) Zhao
