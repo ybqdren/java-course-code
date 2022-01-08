@@ -41,6 +41,8 @@ c9_1009     [慕课网] [面面俱到的Java接口自动化测试实战](https:/
 c10_1010    [慕课网] [Java并发编程入门与高并发面试](https://coding.imooc.com/class/195.html)
 
 
+c11_1011    [慕课网] [金职位-Java工程师](https://class.imooc.com/sale/java2021)
+
 ...
 
 cblog_test_2022 博客学习代码收集
