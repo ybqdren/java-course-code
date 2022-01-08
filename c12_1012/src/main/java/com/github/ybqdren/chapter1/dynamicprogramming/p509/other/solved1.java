@@ -13,7 +13,11 @@ public class solved1 {
 
 
     // 方法三：通项公式
-
+    public static int fib_3(int n) {
+        double sqrt5 = Math.sqrt(5);
+        double fibN = Math.pow((1 + sqrt5) / 2,n) - Math.pow((1 - sqrt5) / 2,n);
+        return (int) Math.round(fibN / sqrt5);
+    }
 
     // 方法二：矩阵快速幂
     public static int fib_2(int n) {
