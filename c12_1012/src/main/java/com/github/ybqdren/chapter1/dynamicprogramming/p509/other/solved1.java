@@ -8,7 +8,7 @@ package com.github.ybqdren.chapter1.dynamicprogramming.p509.other;
  **/
 public class solved1 {
     public static void main(String[] args) {
-
+            System.out.println(fib_2(5));
     }
 
 
@@ -23,17 +23,23 @@ public class solved1 {
     public static int fib_2(int n) {
         if(n < 2){return n;}
 
+        // 构建一个 2 * 2 的矩阵
         int[][] q = {{1,1},{1,0}};
         int[][] res = pow(q,n - 1);
         return res[0][0];
     }
 
     public static int[][] pow(int[][] arr,int n){
+        // 构建一个 2 * 2 的矩阵
         int[][] ret = {{1,0},{0,1}};
         while (n > 0){
+            // & ：按位与操作，把所有变为二进制然后按位取之
+//            System.out.println(n & 1);  // n=4,  输出：0
             if((n & 1) == 1){
                 ret = multiply(ret,arr);
             }
+//            System.out.println( n >>= 1); // n=4, 输出：2
+            // n 从4变成了2
             n >>= 1;
             arr = multiply(arr,arr);
         }
