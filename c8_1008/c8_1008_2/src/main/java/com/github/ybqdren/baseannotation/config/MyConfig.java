@@ -1,5 +1,6 @@
 package com.github.ybqdren.baseannotation.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -18,5 +19,9 @@ import org.springframework.context.annotation.Configuration;
     并用于构建 bean 的定义对象，初始化 Spring 容器
  */
 @Configuration
+@ComponentScan(basePackages = {"com.github.ybqdren.baseannotation.service"})
 public class MyConfig {
+    public MyConfig() {
+        System.out.println("IOC 容器初始化");
+    }
 }
