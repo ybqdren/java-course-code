@@ -16,7 +16,38 @@ public class solved1 {
 
 
     // 方法二：矩阵快速幂
+    public static int fib_2(int n) {
+        if(n < 2){return n;}
 
+        int[][] q = {{1,1},{1,0}};
+        int[][] res = pow(q,n - 1);
+        return res[0][0];
+    }
+
+    public static int[][] pow(int[][] arr,int n){
+        int[][] ret = {{1,0},{0,1}};
+        while (n > 0){
+            if((n & 1) == 1){
+                ret = multiply(ret,arr);
+            }
+            n >>= 1;
+            arr = multiply(arr,arr);
+        }
+        return ret;
+    }
+
+    public static int[][] multiply(int[][] arr,int[][] brr){
+        int[][] c = new int[2][2];
+        for(int i=0;i < 2;i++){
+            for(int j=0;j < 2;j++){
+                c[i][j] = arr[i][0] * brr[0][j] + arr[i][1] * brr[1][j];
+            }
+        }
+
+        return c;
+    }
+
+    // ----
 
     // 方法一：动态规划
     public static int fib_1(int n) {
@@ -29,5 +60,5 @@ public class solved1 {
         }
         return r;
     }
-
+    // -------
 }

@@ -46,7 +46,7 @@ c11_1011    [慕课网] [金职位-Java工程师](https://class.imooc.com/sale/j
 
 
 
-c12_1012    [图书] [labuladong的算法小抄](https://book.douban.com/subject/35252621/)
+c12_1012    [图书] [《labuladong的算法小抄》](https://book.douban.com/subject/35252621/) by 付东来
 
 
 ...
