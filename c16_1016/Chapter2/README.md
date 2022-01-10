@@ -27,3 +27,37 @@ Spring Boot 会使用默认的端口号（8080）启动服务，如果要切换�
 - 通过 SpringApplication.setDefaultProperties 指定的默认属性
 
 上面的顺序比较复杂，在大部分情况下，并不需要使用所有的配置。
+
+
+
+
+
+# 打包和运行项目
+```shell
+mvc clean package
+```
+
+输出目录为工程目录下的 target 目录。
+
+
+打包的结果是一个 war 文件，如果需要将它部署到第三方服务器，那么只需要将它放到第三方服务器的部署目录下即可。
+
+例如放到 Tomcat 的 webapps 目录下。
+
+
+Spring Boot 还允许我们使用命令运行它，只需要在这个目录下运行命令：
+```shell
+java -jar .\chapter2-0.0.1-SNAPSHOT.war
+```
+
+就可以运行工程了，它会以在 application.yml 中 spring.profiles.active 中选择的配置文件进行运行。
+
+如果我们想使用自己的配置项，如想使用 8003 端口启动项目，那么可以通过命令参数来代替它，如执行下面的命令：
+```shell
+java -jar .\chapter2-0.0.1-SNAPSHOT.war --sever.port=8003
+```
+
+如果想单独指定配置文件，可以这样启动：
+```shell
+java -jar .\chapter2-0.0.1-SNAPSHOT.war --spring.profiles.active=peer2
+```

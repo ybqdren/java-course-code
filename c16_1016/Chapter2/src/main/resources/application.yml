@@ -3,6 +3,11 @@ server:
 
 
 spring:
+  profiles:
+    # 设置环境变量，启用 applicaiton-peer1.yml 作为配置文件
+    # 需要启用配置文件启用 application-peer2.yml 时，只需要修改为 peer2 即可
+    active: peer1
+
   thymeleaf:
     cache: false
     prefix: classpath:/templates/

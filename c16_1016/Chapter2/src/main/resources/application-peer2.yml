@@ -1,0 +1,2 @@
+server:
+  port: 8002  # 内嵌 Tomcat 端口号 8001
