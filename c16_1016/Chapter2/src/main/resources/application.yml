@@ -1,2 +1,11 @@
 server:
-  port: 8001  # ???? Tomcat ??? 8001
+  port: 8001  # 内嵌 Tomcat 端口号 8001
+
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    encoding: utf-8 # 编码
+    suffix: .html  # 模板后缀
+    mode: HTML     # 模板
