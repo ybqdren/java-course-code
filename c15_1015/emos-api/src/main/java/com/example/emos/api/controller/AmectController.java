@@ -46,6 +46,23 @@ public class AmectController {
     @Value("${wx.key}")
     private String key;
 
+
+    /**
+     * 查询罚款信息
+     *      1. 数据来源
+     *          - 系统自动生成
+     *          - 手动添加的罚款
+     *
+     *      2. 有条件分页查询
+     *          - 姓名
+     *          - 部门
+     *          - 罚款类型
+     *          - 日期范围
+     *          - 缴纳状态
+     *      3.查询每条罚款记录是否与访问当前页面的用户有关
+     * @param form
+     * @return
+     */
     @PostMapping("/searchAmectByPage")
     @Operation(summary = "查询罚款分页记录")
     @SaCheckLogin
@@ -67,6 +84,13 @@ public class AmectController {
 
     }
 
+    /**
+     * 添加罚款记录
+     *      1. 可以选择多个当事人，自动添加多条罚款记录
+     *      2. 罚款金额单位是元
+     * @param form
+     * @return
+     */
     @PostMapping("/insert")
     @Operation(summary = "添加罚款记录")
     @SaCheckPermission(value = {"ROOT", "AMECT:INSERT"}, mode = SaMode.OR)
@@ -93,6 +117,13 @@ public class AmectController {
         return R.ok(map);
     }
 
+    /**
+     * 更新罚款记录：
+     *       1. 只能修改罚款内容
+     *       2. 不能修改罚款当事人
+     * @param form
+     * @return
+     */
     @PostMapping("/update")
     @Operation(summary = "更新罚款记录")
     @SaCheckPermission(value = {"ROOT", "AMECT:UPDATE"}, mode = SaMode.OR)
@@ -102,6 +133,13 @@ public class AmectController {
         return R.ok().put("rows",rows);
     }
 
+    /**
+     * 删除罚款记录
+     *  1. 可以同时删除多罚款记录
+     *  2. 因为无法修改罚款当事人，所以可以先删除罚款，然后创建新的罚款
+     * @param form
+     * @return
+     */
     @PostMapping("/deleteAmectByIds")
     @Operation(summary = "删除罚款记录")
     @SaCheckPermission(value = {"ROOT", "AMECT:DELETE"}, mode = SaMode.OR)
@@ -110,6 +148,43 @@ public class AmectController {
         return R.ok().put("rows",rows);
     }
 
+
+    /**
+     * 缴纳罚款：
+     *      （本课程使用成熟稳定的 V2 版本微信支付 API 接口）
+     *
+     *      1. 商品订单
+     *          - 罚款记录等价于商品订单
+     *          - uuid 字段充当商品 ID
+     *
+     *      2. 支付订单
+     *          - 有微信平台生成支付订单
+     *          - 调用的时候需传入若干参数
+     *          - 支付信息需要后端生成付款二维码
+     *
+     *      3. 接收付款通知
+     *          - 微信平台会把付款结果发送给移动端和商户系统
+     *          - 配置内网穿透
+     *              --> 因为本地电脑没有外网静态 IP，所以收不到付款结果通知
+     *              --> 量子互联
+     *                  --- 每月10元
+     *                  --- 不限流量
+     *
+     *          - 更新罚款单为已付款
+     *
+     *      4. 推送付款结果给前端页面
+     *          - 利用 WebSocket 技术
+     *          - 后端系统缓存 Session 连接
+     *          - 利用缓存的 session 给前端推送消息
+     *          - 为了避免 WebSocket 连接超时，需要客户端轮询发 ping 请求
+     *
+     *      5. 主动查询付款结果
+     *          - 商户系统和手机端都可能没有收到付款结果通知
+     *          - 用户点击页面按钮，主动查询付款结果
+     *
+     * @param form
+     * @return
+     */
     @PostMapping("/createNativeAmectPayOrder")
     @Operation(summary = "创建Native支付罚款订单")
     @SaCheckLogin
