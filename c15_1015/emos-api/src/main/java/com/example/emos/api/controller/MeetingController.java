@@ -27,6 +27,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+
+/**
+ * 后端数据合并
+ *  - 用 JSON_OBJECT 函数把多个字段整合成一个字段
+ *  - 用 GROUP_CONCAT 函数，合并多条记录
+ *  - 用 CONCAT 函数给字符串收尾拼接中括号
+ *
+ */
+
 @RestController
 @RequestMapping("/meeting")
 @Tag(name = "MeetingController", description = "会议接口")
@@ -42,6 +51,19 @@ public class MeetingController {
     @Autowired
     private MeetingService meetingService;
 
+    /**
+     * 线下会议页面：
+     *   1 日程表
+     *      - 默认显示
+     *      - 显示所有会议室某天的会议预约
+     *      - 需要分页显示
+     *   2 周历表
+     *      - 按照会议查找才能进入周日历
+     *      - 显示某个会议室 7 天的会议预约
+     *
+     * @param form
+     * @return
+     */
     @PostMapping("/searchOfflineMeetingByPage")
     @Operation(summary = "查询线下会议的分页数据")
     @SaCheckLogin
@@ -60,6 +82,18 @@ public class MeetingController {
         return R.ok().put("page", pageUtils);
     }
 
+    /**
+     * 创建会议申请:
+     *  1. 使用异步线程任务
+     *  2. 调用工作流项目
+     *      - 创建工作实例
+     *      - 开启定时器
+     *          -> 修改会议状态
+     *          -> 创建出勤和缺勤名单
+     *          -> 生成罚款单
+     * @param form
+     * @return
+     */
     @PostMapping("/insert")
     @Operation(summary = "添加会议")
     @SaCheckLogin
@@ -130,6 +164,21 @@ public class MeetingController {
         return R.ok(map);
     }
 
+    /**
+     * 删除会议申请：
+     *      1.前提条件
+     *          - 只有会议申请人有资格删除会议申请
+     *          - 只有 1 和 3 状态的会议可以删除
+     *          - 距离会议开始多于 20 分钟
+     *
+     *      2.使用异步线程任务
+     *      3.调用工作流项目
+     *          - 关闭工作实例
+     *          - 删除相关的定时器
+     *
+     * @param form
+     * @return
+     */
     @PostMapping("/deleteMeetingApplication")
     @Operation(summary = "删除会议申请")
     @SaCheckLogin

@@ -52,6 +52,13 @@ public class UserController {
         return R.ok().put("result", bool);
     }
 
+    /**
+     * 微信小程序登录：
+     *      1. 扫描二维码
+     *      2. WebSockets 检测用户扫码的结果
+     * @param form
+     * @return
+     */
     @PostMapping("/wechatLogin")
     @Operation(summary = "微信小程序登陆")
     public R wechatLogin(@Valid @RequestBody WechatLoginForm form) {
@@ -95,6 +102,16 @@ public class UserController {
         return R.ok().put("list", list);
     }
 
+    /**
+     * 账号登录：
+     *  1. 前后端验证
+     *  2. 颁发 Token 令牌
+     *  3. 认证验证机制：
+     *      - 验证提交的 Token 令牌
+     *      - 查验是否在 Redis 中有缓存的 Token
+     * @param form
+     * @return
+     */
     @PostMapping("/login")
     @Operation(summary = "登陆系统")
     public R login(@Valid @RequestBody LoginForm form){
@@ -130,6 +147,21 @@ public class UserController {
         int rows=userService.updatePassword(param);
         return R.ok().put("rows",rows);
     }
+
+    /**
+     * 查询用户信息：
+     *      1.有条件分页查询
+     *          - 姓名
+     *          - 性别
+     *          - 角色
+     *          - 部门
+     *          - 状态
+     *      2.显示用户角色
+     *          - 一个用户拥有多个角色
+     *          - 用 GROUP_CONCAT 函数把多个角色记录拼接成字符串
+     * @param form
+     * @return
+     */
     @PostMapping("/searchUserByPage")
     @Operation(summary = "查询用户分页记录")
     @SaCheckPermission(value = {"ROOT", "USER:SELECT"}, mode = SaMode.OR)
@@ -143,6 +175,15 @@ public class UserController {
         return R.ok().put("page",pageUtils);
     }
 
+    /**
+     * 添加用户记录：
+     *      - 密码要用 AES 加密
+     *      - 弹窗页面：
+     *          1. 利用自定义标签定义弹窗页面
+     *          2. 调用 init 函数执行初始化弹窗里面的空间
+     * @param form
+     * @return
+     */
     @PostMapping("/insert")
     @SaCheckPermission(value = {"ROOT", "USER:INSERT"}, mode = SaMode.OR)
     @Operation(summary = "添加用户")
@@ -155,6 +196,14 @@ public class UserController {
         return R.ok().put("rows",rows);
     }
 
+    /**
+     * 修改用户记录：
+     *      - 不需要判断哪些字段被修改了
+     *      - 弹窗页面的所有信息都更新到数据库
+     *      - 被修改信息的用户，要立即踢下线
+     * @param form
+     * @return
+     */
     @PostMapping("/update")
     @SaCheckPermission(value = {"ROOT", "USER:UPDATE"}, mode = SaMode.OR)
     @Operation(summary = "修改用户")
@@ -168,6 +217,15 @@ public class UserController {
         return R.ok().put("rows",rows);
     }
 
+    /**
+     * 删除用户记录：
+     *      - 约束 ：
+     *           1. 不能删除超级管理员；
+     *           2.当前用户不能删除自己的记录。
+     *      - 删除的用户，要立即踢下线
+     * @param form
+     * @return
+     */
     @PostMapping("/deleteUserByIds")
     @SaCheckPermission(value = {"ROOT", "USER:DELETE"}, mode = SaMode.OR)
     @Operation(summary = "删除用户")

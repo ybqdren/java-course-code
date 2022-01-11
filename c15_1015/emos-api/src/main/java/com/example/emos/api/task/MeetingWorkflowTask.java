@@ -16,6 +16,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
+/**
+ * 定义定时任务
+ */
+
 @Component
 @Slf4j
 public class MeetingWorkflowTask {
