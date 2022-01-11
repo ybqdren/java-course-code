@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @description
  **/
 
-@Configuration(value = "org.github.ybqdren.config.MyConfiguration")
+@Configuration(value = "org.github.ybqdren.config.*")
 @SpringBootApplication //(scanBasePackages = {"org.github.ybqdren"})
 public class SpringBootStartApplication {
     public static void main(String[] args) {

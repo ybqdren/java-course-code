@@ -14,6 +14,12 @@ import javax.websocket.server.ServerEndpoint;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+
+/**
+ * https://www.cnblogs.com/jingmoxukong/p/7755643.html <WebSocket 详细教程>
+ */
+
+
 @Slf4j
 @ServerEndpoint(value = "/socket")
 @Component
