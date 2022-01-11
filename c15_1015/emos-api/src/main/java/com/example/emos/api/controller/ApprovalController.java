@@ -53,6 +53,26 @@ public class ApprovalController {
     @Autowired
     private ApprovalService approvalService;
 
+
+    /**
+     * 查询审批任务分页数据：
+     *      1. 申请人
+     *      2. 申请类别
+     *      3. 实例编号
+     *
+     *      4. 审批状态：
+     *        - 待审批
+     *        - 已审批
+     *        - 已结束
+     *
+     * 查询审批任务详情：
+     *     - 文字详情
+     *     - BPMN 进度图
+     *
+     *
+     * @param form
+     * @return
+     */
     @PostMapping("/searchTaskByPage")
     @Operation(summary = "查询分页任务列表")
     @SaCheckPermission(value = {"WORKFLOW:APPROVAL", "FILE:ARCHIVE"}, mode = SaMode.OR)
@@ -109,6 +129,22 @@ public class ApprovalController {
         }
     }
 
+
+    /**
+     * 审批任务：
+     *      1. BPMN 流程
+     *          - 总经理创建的会议申请不需要审批
+     *          - 非总经理创建的会议申请
+     *              -> 由申请人部门领导审批
+     *              -> 如果参会人是不同部门，还需要总经理审批
+     *
+     *      2. 调用工作流项目
+     *          - 判断响应状态码 200
+     *          - 会议状态自动变更为 3
+     *
+     * @param form
+     * @return
+     */
     @PostMapping("/approvalTask")
     @Operation(summary = "审批任务")
     @SaCheckPermission(value = {"WORKFLOW:APPROVAL"}, mode = SaMode.OR)
