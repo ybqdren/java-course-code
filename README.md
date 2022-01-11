@@ -33,11 +33,17 @@ c14_1014    [慕课网] [微服务优惠卷系统](https://github.com/ybqdren/ja
 
 c15_1015    [慕课网] [企业级在线办公系统](https://github.com/ybqdren/java-course-code/tree/main/c15_1015)
 
-c16_1016    [图书] [Spring Cloud:微服务和分布式系统实践](https://github.com/ybqdren/java-course-code/tree/main/c16_1016) by 杨开振
-
 c17_1017    [慕课网] [Java接口自动化测试实战](https://github.com/ybqdren/java-course-code/tree/main/c17_1017) by 杨开振
 
 c18_1018    [慕课网] [Spring Cloud微服务安全实战](https://github.com/ybqdren/java-course-code/tree/main/c18_1018)
+
+c19_1019    [慕课网] [Java开发企业级权限管理系统 Spring Security/Apache Shiro对比分析](https://github.com/ybqdren/java-course-code/tree/main/c19_1019)
+
+c20_1020    [慕课网] [Socket网络编程进阶与实战 系统掌握Socket核心技术](https://github.com/ybqdren/java-course-code/tree/main/c20_1020)
+
+c21_1021    [图书] [《程序员面试金典（第5版）》](https://github.com/ybqdren/java-course-code/tree/main/c21_1021) by Gayle Laakmann McDowell
+
+c22_2022    [图书] [《通用源码阅读指导书――MyBatis源码详解》](https://github.com/ybqdren/java-course-code/tree/main/c22_1022) by 易哥
 
 ...
 
