@@ -57,6 +57,7 @@ c26_2026    [慕课网] [Spring Cloud Alibaba 微服务从入门到进阶](https
 
 c27_2027    [慕课网] [Spring Cloud微服务框架，实战企业级优惠券系统](https://github.com/ybqdren/java-course-code/tree/main/c27_1027)
 
+c28_2028   [慕课网]  [Java 分布式后台系统](https://github.com/ybqdren/java-course-code/tree/main/c28_1028)
 
 ...
 
