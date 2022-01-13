@@ -8,28 +8,120 @@
         <version>2.6.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.github.ybqdren</groupId>
     <artifactId>merchants</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>merchants</name>
     <description>merchants</description>
+
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+
+        <!-- Spring MVC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- 加入后需要配置数据库信息，不然启动时控制台会有错误：
+            ***************************
+            APPLICATION FAILED TO START
+            ***************************
+
+            Description:
+
+            Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+            Reason: Failed to determine a suitable driver class
+
+            Action:
+
+            Consider the following:
+                If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+                If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+        -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!-- 解析 yml 文件 springboot 中已经内置 -->
+<!--        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.10</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+        <!-- lomboke 更方便的操作 java bean ，原理是 aop-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- 测试用例 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- json 的序列化和反序列化 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.31</version>
+        </dependency>
+
+        <!-- 自动配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <!-- kafka 依赖 -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <!-- 日志系统 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+        <!-- 各种工具类，例如时间工具类 .. -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
+        <finalName>ImoocMerchants</finalName> <!-- 设置 jar 包的名称 -->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
