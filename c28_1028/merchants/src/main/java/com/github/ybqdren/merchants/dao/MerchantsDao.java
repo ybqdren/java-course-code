@@ -1,6 +1,6 @@
-package com.github.ybqdren.merchants.constant.dao;
+package com.github.ybqdren.merchants.dao;
 
-import com.github.ybqdren.merchants.constant.entity.Merchants;
+import com.github.ybqdren.merchants.entity.Merchants;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

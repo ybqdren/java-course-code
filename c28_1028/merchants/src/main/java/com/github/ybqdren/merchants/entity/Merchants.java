@@ -1,4 +1,4 @@
-package com.github.ybqdren.merchants.constant.entity;
+package com.github.ybqdren.merchants.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.github.ybqdren.merchants.vo;
 
 import com.github.ybqdren.merchants.constant.ErrorCode;
-import com.github.ybqdren.merchants.constant.dao.MerchantsDao;
+import com.github.ybqdren.merchants.dao.MerchantsDao;
 import lombok.AllArgsConstructor;
 import java.util.Date;
 
@@ -56,7 +56,7 @@ public class PassTemplate {
      * @return {@link ErrorCode}
      */
     public ErrorCode validate(MerchantsDao merchantsDao){
-        if(null == merchantsDao.findbyId(id)){
+        if(null == merchantsDao.findbyId(this.id)){
             return ErrorCode.MERCHANTS_NOT_EXIST;
         }
 
