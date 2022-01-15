@@ -4,11 +4,15 @@ package com.github.ybqdren.service;
 import com.alibaba.fastjson.JSON;
 import com.github.ybqdren.merchants.service.IMerchantServ;
 import com.github.ybqdren.merchants.vo.CreateMerchantsRequest;
+import com.github.ybqdren.merchants.vo.PassTemplate;
+import org.assertj.core.util.DateUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Date;
 
 /**
  * @author zhao wen
@@ -48,5 +52,22 @@ public class MerchantsServTest {
     @Test
     public void testBuildMerchantsInfoById(){
         System.out.println(JSON.toJSONString(merchantServ.buildMerchantsInfoById(7)));
+    }
+
+    @Test
+    public void testDropPassTemplate(){
+        PassTemplate passTemplate = new PassTemplate();
+        passTemplate.setId(9);
+        passTemplate.setTitle("title: 卡包");
+        passTemplate.setSummary("简介： 一个卡包");
+        passTemplate.setDesc("详情：一个分布式的卡包");
+        passTemplate.setLimit(10000L);
+        passTemplate.setHasToken(false);
+        passTemplate.setBackgroud(2);
+        passTemplate.setStart(new Date());
+//        passTemplate.setEnd();
+        System.out.println(JSON.toJSONString(
+                merchantServ.dropPassTemplate(passTemplate)
+        ));
     }
 }

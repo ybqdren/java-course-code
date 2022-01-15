@@ -5,6 +5,7 @@ import com.github.ybqdren.merchants.dao.MerchantsDao;
 import lombok.AllArgsConstructor;
 import java.util.Date;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -44,7 +45,7 @@ public class PassTemplate {
     private Integer backgroud;
 
     /** 优惠券开始时间 **/
-    private Data start;
+    private Date start;
 
     /** 优惠卷结束时间 **/
     private Date end;
