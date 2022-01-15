@@ -1,0 +1,33 @@
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource.username=root
+#spring.datasource.password=666666
+#spring.datasource.url=jdbc:mysql://localhost:3306/passbook
+
+
+
+
+spring:
+  application:
+    name: ImoocMerchants
+  datasource:
+    url: jdbc:mysql://localhost:3306/passbook?autoReconnect=true # jdbc:mysql://[ip 地址]:[端口号]/数据库名称
+                                                                  # autoReconnect = true 断开后自动重连
+    username: root
+    password: 666666
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092     # 配置 kafka 集群
+    consumer:                             # 消费者 配置
+      group-id: passbook
+    listener:                             # 配置 listener 去监听 consumer
+      concurrency: 4                      # 配置 4 个线程去监听消费者
+server:
+  port: 9527
+
+logging:
+  file:
+    name: immoc-merchants.log
+  level:
+
+    com.github.ybqdren: debug             # level Map<key,value> | key -> 包名 value -> 日志级别
+                                          # https://www.cnblogs.com/Koma-vv/p/11653494.html
+

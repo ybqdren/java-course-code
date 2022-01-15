@@ -40,7 +40,7 @@ public class CreateMerchantsRequest {
      * @param merchantsDao {@link MerchantsDao}
      * @return {@link  ErrorCode}
      */
-    private ErrorCode validate(MerchantsDao merchantsDao){
+    public ErrorCode validate(MerchantsDao merchantsDao){
         if( null == this.name ){
             return ErrorCode.EMPTY_NAME;
         }
