@@ -2,6 +2,7 @@ package com.github.ybqdren.merchants.service.impl;
 
 import com.github.ybqdren.merchants.constant.ErrorCode;
 import com.github.ybqdren.merchants.dao.MerchantsDao;
+import com.github.ybqdren.merchants.entity.Merchants;
 import com.github.ybqdren.merchants.service.IMerchantServ;
 import com.github.ybqdren.merchants.vo.CreateMerchantsRequest;
 import com.github.ybqdren.merchants.vo.CreateMerchantsResponse;
@@ -37,6 +38,7 @@ public class MerchantsServImpl implements IMerchantServ {
         ErrorCode errorCode = request.validate(merchantsDao);
 
         if(errorCode != ErrorCode.SUCCESS){
+            createMerchantsResponse.setId(-1);
             response.setErrorCode(errorCode.getCode());
             response.setErrorMsg(errorCode.getDesc());
         }else{
@@ -50,7 +52,15 @@ public class MerchantsServImpl implements IMerchantServ {
 
     @Override
     public Response buildMerchantsInfoById(Integer id) {
-        return null;
+        Response response = new Response();
+        Merchants merchants = merchantsDao.findbyId(id);
+        if(null == merchants){
+            response.setErrorCode(ErrorCode.MERCHANTS_NOT_EXIST.getCode());
+            response.setErrorMsg(ErrorCode.MERCHANTS_NOT_EXIST.getDesc());
+        }
+
+        response.setData(merchants);
+        return response;
     }
 
     @Override

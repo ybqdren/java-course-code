@@ -23,6 +23,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  * </p>
  *
  * <p> @SpringBootTest 告诉 Spring Boot 查找带 @SpringBootApplication 注解的主配置类，并使用该类启动 Spring </p>
+ *
+ * <p> 企业级的测试要先验证是否可用 再使用 这里只是写个形式进行演示</p>
  * */
 
 @ExtendWith(value = {SpringExtension.class})
@@ -40,5 +42,11 @@ public class MerchantsServTest {
         request.setAddress("china");
 
         System.out.println(JSON.toJSONString(merchantServ.createMechants(request)));
+    }
+
+
+    @Test
+    public void testBuildMerchantsInfoById(){
+        System.out.println(JSON.toJSONString(merchantServ.buildMerchantsInfoById(7)));
     }
 }
