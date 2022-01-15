@@ -27,6 +27,7 @@ logging:
   file:
     name: immoc-merchants.log
   level:
+
     com.github.ybqdren: debug             # level Map<key,value> | key -> 包名 value -> 日志级别
                                           # https://www.cnblogs.com/Koma-vv/p/11653494.html
 
