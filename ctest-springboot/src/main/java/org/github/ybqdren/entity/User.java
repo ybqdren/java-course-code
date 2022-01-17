@@ -25,12 +25,9 @@ public class User {
     @Id
     private String id;
 
-    @NotNull
     private String name;
 
-    private int sex;
-
     @Email
-    private String emailAddress;
+    private String email;
 }
 

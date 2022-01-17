@@ -1,11 +1,3 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/ctest_springboot
-    username: root
-    password: 666666
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  security:
-    user:
-      name: admin
-      password: 123
+  profiles:
+    active: default
