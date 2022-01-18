@@ -3,9 +3,8 @@ package org.github.ybqdren.api.jpa;
 import org.github.ybqdren.Repository.UserRepository;
 import org.github.ybqdren.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Wen(Joan) Zhao
@@ -36,4 +35,16 @@ public class UserController {
     public Iterable<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    @GetMapping(path = "/info/{id}")
+    public User findOne(@PathVariable Long id){
+        return userRepository.findOne(id);
+    }
+
+    @GetMapping(path = "/info")
+    public void deleteById(@RequestParam Long id){
+        userRepository.deleteById(id);
+    }
+
+
 }
