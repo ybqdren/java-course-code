@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Wen(Joan) Zhao
  * @time 2022/1/18 12:28
  * @package org.github.ybqdren.api
- * @description
+ * @description {@link org.springframework.data.repository.CrudRepository} 实现接口测试
  **/
 
 
