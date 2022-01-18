@@ -1,0 +1,14 @@
+# 创建一个命名空间： pb
+creat_namespace 'pb'
+
+# 创建一张表：用户表 （命名空间:表名）  定义列族 名称：b 每一列有 3 个版本（默认） TTL:生成时间  BLOOMFILTER:布隆过滤器，以行为单位
+create 'pb:user', {NAME => 'b' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'},{NAME => 'o' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'}
+
+# 创建第二张表：优惠卷表
+create 'pb:pass', {NAME => 'i' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'}
+
+# 第三张表：优惠卷模板表
+create 'pb:passTemplate', {NAME => 'b' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'},{NAME => 'c' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'}
+
+# 用户反馈信息表，如果用户每次反馈都是不能修改的，每次都创建一个新的评论，我们就可以将列族的 version 设置为 1
+create 'pb:feedback', {NAME => 'i' , VERSIONS => '3' ,TTL => '2147483647' , 'BLOOMFILTER' => 'ROW'}

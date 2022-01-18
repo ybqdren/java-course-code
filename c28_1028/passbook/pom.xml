@@ -45,17 +45,19 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <!-- hbase springboot 相关的依赖
            项目地址：https://github.com/SpringForAll/spring-boot-starter-hbase
            项目已经很久没有维护了，目前不支持 hbase2 和 java 9+ 版本，只支持 java 8
+
+           参考：https://developer.aliyun.com/article/697208
         -->
         <dependency>
             <groupId>com.spring4all</groupId>
             <artifactId>spring-boot-starter-hbase</artifactId>
-            <version>1.0.0.RELEASE</version>
+            <version>1.5.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -98,6 +100,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

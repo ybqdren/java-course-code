@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Pass-Book
+  datasource:
+    url: jdbc:mysql://localhost:3306/passbook?autoReconnect=true
+    username: root
+    password: 666666
+  kafka:
+    bootstrap-servers: 127.0.0.1:9002
+    consumer:
+      group-id: passbook
+    listener:
+      concurrency: 4
+
+    # ???? kafka ??? hbase ?????????????????? ...
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+server:
+  port: 9528
+
+logging:
+  file:
+    name: passbook.log
+  level:
+    com.github.ybqdren: debug
