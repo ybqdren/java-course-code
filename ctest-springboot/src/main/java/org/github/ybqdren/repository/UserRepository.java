@@ -1,15 +1,13 @@
-package org.github.ybqdren.Repository;
+package org.github.ybqdren.repository;
 
 import org.github.ybqdren.entity.User;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
 
 /**
  * @author Wen(Joan) Zhao
  * @time 2022/1/18 12:25
  * @package org.github.ybqdren.Repository
- * @description
+ * @description  {@link CrudRepository} 使用示例
  **/
 
 
