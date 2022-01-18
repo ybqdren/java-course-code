@@ -3,8 +3,9 @@ package org.github.ybqdren.api.jpa;
 import org.github.ybqdren.Repository.UserRepository;
 import org.github.ybqdren.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * @author Wen(Joan) Zhao
@@ -36,9 +37,16 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    /*
+           {
+                "id": 2,
+                "name": "ybqdren",
+                "email": "withzhaowen@126.com"
+            }
+     */
     @GetMapping(path = "/info/{id}")
-    public User findOne(@PathVariable Long id){
-        return userRepository.findOne(id);
+    public Optional<User> findOne(@PathVariable Long id){
+        return userRepository.findById(id);
     }
 
     @GetMapping(path = "/info")
