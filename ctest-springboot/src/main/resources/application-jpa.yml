@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ctest_springboot
+    url: jdbc:mysql://localhost:3306/test_jpa
     username: root
     password: 666666
     driver-class-name: com.mysql.cj.jdbc.Driver
