@@ -1,4 +1,4 @@
-package org.github.ybqdren.api.jpa;
+package com.github.ybqdren.controller;
 
 import org.github.ybqdren.repository.PersonRepository;
 import org.github.ybqdren.repository.UserPagingAndSortingRepository;
