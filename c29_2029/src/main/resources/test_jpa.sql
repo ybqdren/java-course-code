@@ -40,3 +40,21 @@ INSERT INTO `user` VALUES (7, 'daqi', 'daqi@126.com');
 INSERT INTO `user` VALUES (8, 'jiushi', 'jiushi@126.com');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `userInfo`;
+CREATE TABLE `userInfo`  (
+                         `id` int(0) NOT NULL AUTO_INCREMENT,
+                         `firstName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                         `lastName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                         `emailAddress` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                         PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of userInfo
+-- ----------------------------
+INSERT INTO `userInfo` VALUES (2, 'wen', 'zhao','withzhaowen@126.com');

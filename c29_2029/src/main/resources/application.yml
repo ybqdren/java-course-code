@@ -4,3 +4,16 @@ spring:
     username: root
     password: 666666
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+    # hibernate.ddl-auto：
+    #    create: 启动服务时都会重新创建表，且不管表存不存在；
+    #    create-drop: 启动服务时都会重新创建表，且不管表存不存在，服务停止时删除所有表，不管表中是否有数据；
+    #    update: 启动服务时，自动更新表结构，但数据库表中存在的旧字段不会删除；
+    #    validate: 启动服务时验证表结构，若表结构存在差异则抛出异常；
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+

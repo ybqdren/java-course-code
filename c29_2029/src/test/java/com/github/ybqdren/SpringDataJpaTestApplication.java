@@ -1,6 +1,9 @@
 package com.github.ybqdren;
 
 import com.github.ybqdren.entity.User;
+import com.github.ybqdren.entity.UserInfo;
+import com.github.ybqdren.repository.UserInfoJpaNativeSQLRepository;
+import com.github.ybqdren.repository.UserJpaNativeSQLRepository;
 import com.github.ybqdren.repository.UserJpaRepository;
 import com.github.ybqdren.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -14,7 +17,8 @@ import java.util.List;
  * @time 2022/1/19 10:59
  * @package com.github.ybqdren
  * @description
- * 参考：https://blog.csdn.net/HD243608836/article/details/122239150 < Spring Boot Test单元测试——Junit4、Junit5区别与@ExtendWith不识别生效问题解析 >
+ * 单元测试参考：
+ *      https://blog.csdn.net/HD243608836/article/details/122239150 < Spring Boot Test单元测试——Junit4、Junit5区别与@ExtendWith不识别生效问题解析 >
  **/
 
 
@@ -27,6 +31,28 @@ public class SpringDataJpaTestApplication {
 
     @Autowired
     UserJpaRepository userJpaRepository;
+
+    @Autowired
+    UserJpaNativeSQLRepository userJpaNativeSQLRepository;
+
+    @Autowired
+    UserInfoJpaNativeSQLRepository userInfoJpaNativeSQLRepository;
+
+    /** 注解查询  使用原始的 sql */
+    @Test
+    void userInfoFindJpaNativeSqlRe(){
+        /** User(id=2, name=ybqdren, email=withzhaowen@126.com) */
+        List<UserInfo> userInfo = userInfoJpaNativeSQLRepository.findByFirstName("wen","last_name");
+        System.out.println(userInfo.get(0).toString());
+    }
+
+    /** 注解查询  使用原始的 sql */
+    @Test
+    void userFindJpaNativeSqlRe(){
+        /** User(id=2, name=ybqdren, email=withzhaowen@126.com) */
+        User user = userJpaNativeSQLRepository.findByEmail("withzhaowen@126.com");
+        System.out.println(user.toString());
+    }
 
     /** 注解查询 */
     @Test
