@@ -44,6 +44,10 @@ public class SpringDataJpaTestApplication {
         /** [User(id=2, name=ybqdren, email=withzhaowen@126.com)] */
         users = userRepository.findByEmailContaining("%@126%");
         System.out.println(users.toString());
+
+        /** 1 */
+        Long count = userRepository.countByName("ybqdren");
+        System.out.println(count.toString());
     }
 
 
