@@ -23,8 +23,8 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query("select u from User u where u.name like %?1")
     List<User> findByNameEndingWith(String userName);
 
-/*    *//** 直接使用原始的 SQL *//*
-    @Query(value = "SELECT * FROM USER WHERE EMAIL = ?1",nativeQuery = true)
+    /** 直接使用原始的 SQL */
+/*    @Query(value = "SELECT * FROM USER WHERE EMAIL = ?1",nativeQuery = true)
     User findByEmail(String email);*/
 
 }
