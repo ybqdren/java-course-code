@@ -1,11 +1,15 @@
 package com.github.ybqdren;
 
 import com.github.ybqdren.entity.User;
+import com.github.ybqdren.repository.UserPagingAndSortingRepository;
 import com.github.ybqdren.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -26,6 +30,16 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserPagingAndSortingRepository userPagingAndSortingRepository;
+
+    @Test
+    void userFindPaging(){
+/*        // 这里的"recordNo"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段 https://www.cnblogs.com/chuangqi/p/11261482.html
+        Sort sort = new Sort(Sort.Direction.DESC, "recordNo");
+        Pageable pageable = new PageRequest(1, 6, sort);
+        userPagingAndSortingRepository.findByNameLike("ybqdren",pageable);*/
+    }
 
     @Test
     void userFind(){
