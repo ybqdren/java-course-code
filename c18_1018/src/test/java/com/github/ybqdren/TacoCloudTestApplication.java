@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 
 @SpringBootApplication
-public class TacoCloudApplication {
+public class TacoCloudTestApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TacoCloudApplication.class);
+        SpringApplication.run(TacoCloudTestApplication.class);
     }
 }
