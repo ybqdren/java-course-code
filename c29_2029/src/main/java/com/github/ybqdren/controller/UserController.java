@@ -1,7 +1,6 @@
 package com.github.ybqdren.controller;
 
 import com.github.ybqdren.entity.User;
-import com.github.ybqdren.repository.UserPagingAndSortingRepository;
 import com.github.ybqdren.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +21,6 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private UserPagingAndSortingRepository userPagingAndSortingRepository;
 
 
     // ---------------- CrudRepository 测试 ----------------------------------
