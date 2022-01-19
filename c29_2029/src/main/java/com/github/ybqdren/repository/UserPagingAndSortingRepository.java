@@ -1,6 +1,7 @@
 package com.github.ybqdren.repository;
 
-import org.github.ybqdren.entity.User;
+
+import com.github.ybqdren.entity.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
