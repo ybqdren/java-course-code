@@ -18,7 +18,10 @@ import java.util.List;
 public interface UserInfoJpaNativeSQLRepository extends JpaRepository<UserInfo, Long> {
 
     /** 直接使用原始的 SQL */
-    @Query(value = "SELECT * FROM userInfo WHERE first_name = ?1 ORDER BY ?2",nativeQuery = true)
+    @Query(value = "SELECT * FROM user_info WHERE email_address = ?1",nativeQuery = true)
+    UserInfo findByEmailAddress(String emailAddress);
+
+    @Query(value = "SELECT * FROM user_info WHERE first_name = ?1 ORDER BY ?2",nativeQuery = true)
     List<UserInfo> findByFirstName(String firstName , String sort);
 
     

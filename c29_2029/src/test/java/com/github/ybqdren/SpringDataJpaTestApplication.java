@@ -9,6 +9,7 @@ import com.github.ybqdren.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -41,9 +42,22 @@ public class SpringDataJpaTestApplication {
     /** 注解查询  使用原始的 sql */
     @Test
     void userInfoFindJpaNativeSqlRe(){
-        /** User(id=2, name=ybqdren, email=withzhaowen@126.com) */
-        List<UserInfo> userInfo = userInfoJpaNativeSQLRepository.findByFirstName("wen","last_name");
-        System.out.println(userInfo.get(0).toString());
+        UserInfo userInfo = UserInfo.builder()
+                .nikaName("ybqdren")
+                .firstName("wen")
+                .lastName("zhao")
+                .emailAddress("withzhaowen@126.com")
+                .build();
+
+        if (userInfoJpaNativeSQLRepository.findByEmailAddress("withzhaowen@126.com") == null) {
+            userInfoJpaNativeSQLRepository.save(userInfo);
+        }
+
+        /** UserInfo(id=1, nikaName=ybqdren, firstName=wen, lastName=zhao, emailAddress=withzhaowen@126.com)*/
+        List<UserInfo> userInfos = userInfoJpaNativeSQLRepository.findByFirstName("wen","last_name");
+        if(userInfos.size() > 0){
+            System.out.println(userInfos.get(0).toString());
+        }
     }
 
     /** 注解查询  使用原始的 sql */
