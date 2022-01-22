@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -53,6 +54,8 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query(value = "select u from User u where u.name = ?1")
     Page<User> findByName(String name , Pageable pageable);
 
-
+    /** 使用 Param 注解，绑定参数 */
+    @Query("select u from User u where u.email = :email or u.name = :name")
+    User findByEmailOrName(@Param("email") String email , @Param("name") String name);
 
 }

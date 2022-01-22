@@ -34,4 +34,6 @@ public interface UserRepository extends CrudRepository<User,Long> {
 
     /** delete from user where name = ?1; 根据一个字段进行删除操作 */
     public long deleteByName(String userName);
+
+
 }

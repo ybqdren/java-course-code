@@ -59,6 +59,23 @@ public class SpringDataJpaTestApplication {
 
     }
 
+    /** 使用 Param 注解来绑定参数 */
+    @Test
+    void queryParamAnnotation(){
+        /** User(id=3, name=ybqdren, email=withzhaowen@126.com) */
+        /** Hibernate:
+         *  select user0_.id as id1_0_,
+         *         user0_.email as email2_0_,
+         *         user0_.name as name3_0_
+         *         from
+         *            user user0_
+         *         where
+         *            user0_.email=? or user0_.name=?
+         */
+        User user = userJpaRepository.findByEmailOrName(myEmail,myName);
+        System.out.println(user);
+    }
+
     /** 分页 */
     @Test
     void queryPage(){
