@@ -2,7 +2,6 @@ package com.github.ybqdren.passbook.dao;
 
 import com.github.ybqdren.passbook.entity.Merchants;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
 /**
