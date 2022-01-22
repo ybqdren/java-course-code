@@ -39,6 +39,13 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserInfoJpaNativeSQLRepository userInfoJpaNativeSQLRepository;
 
+
+
+    @Test
+    void testQueryByExampleExecutor(){
+
+    }
+
     /** 注解查询  使用原始的 sql */
     @Test
     void userInfoFindJpaNativeSqlRe(){
@@ -75,7 +82,9 @@ public class SpringDataJpaTestApplication {
         System.out.println(user.toString());
 
         List<User> users = userJpaRepository.findByNameEndingWith("i");
-        System.out.println(users.get(0).toString());
+        if(users.size() >= 1){
+            System.out.println(users.get(0).toString());
+        }
     }
 
     /** 分页查询 */
