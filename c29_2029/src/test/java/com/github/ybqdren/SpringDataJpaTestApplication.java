@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -57,6 +59,13 @@ public class SpringDataJpaTestApplication {
 
     }
 
+    /** 分页 */
+    @Test
+    void queryPage(){
+        Page<User> users =  userJpaRepository.findByName("ybqdren" , PageRequest.of(1,10));
+        System.out.println(users);
+    }
+
     /** 排序 */
     @Test
     void querySort(){
@@ -65,16 +74,16 @@ public class SpringDataJpaTestApplication {
         Sort sort = Sort.by("name");
 //        Sort sort = new Sort(Sort.Direction.DESC,fields);*/
         // 这里的 name 指的是数据库里面的字段名，而不是对象的字段名
-        List<User> user = userJpaRepository.findById("ybqdren","name");
+        List<User> user = userJpaRepository.findById("ybqdre","name");
         System.out.println(user);
 
-        user = userJpaRepository.findByAndSort("ybqdren",Sort.by("name"));
+        user = userJpaRepository.findByAndSort("d",Sort.by("name"));
         System.out.println(user);
 
 /*        user = userJpaRepository.findByAndSort("ybqdren",Sort.by("LENGTH(name)"));
         System.out.println(user);*/
 
-        List<Object[]> userObject = userJpaRepository.findByAsArrayAndSort("ybqdren",Sort.by("fn_len"));
+        List<Object[]> userObject = userJpaRepository.findByAsArrayAndSort("d",Sort.by("fn_len"));
         System.out.println(userObject.size());
     }
 

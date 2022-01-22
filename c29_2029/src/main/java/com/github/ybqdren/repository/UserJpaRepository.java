@@ -1,6 +1,8 @@
 package com.github.ybqdren.repository;
 
 import com.github.ybqdren.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -47,5 +49,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query("select u.id , LENGTH(u.name) as fn_len from User u where u.name like ?1%")
     List<Object[] > findByAsArrayAndSort(String name , Sort sort);
 
-
+    /** Query 分页 */
+    @Query(value = "select u from User u where u.name = ?1")
+    Page<User> findByName(String name , Pageable pageable);
 }
