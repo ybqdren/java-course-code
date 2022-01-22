@@ -9,8 +9,6 @@ import com.github.ybqdren.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
-
 import java.util.List;
 
 /**
@@ -44,6 +42,17 @@ public class SpringDataJpaTestApplication {
     @Test
     void testQueryByExampleExecutor(){
 
+    }
+
+    /** 排序 */
+    @Test
+    void querySort(){
+/*        List<String> fields = new ArrayList<>();
+        fields.add("name");
+        Sort sort = Sort.by("name");
+//        Sort sort = new Sort(Sort.Direction.DESC,fields);*/
+        List<User> user = userJpaRepository.findById("ybqdren","name");
+        System.out.println(user);
     }
 
     /** 注解查询  使用原始的 sql */
@@ -126,17 +135,43 @@ public class SpringDataJpaTestApplication {
      */
     @Test
     void contextLoads(){
-        User user = User.builder()
+        User user1 = User.builder()
                 .name("ybqdren")
                 .email("withzhaowen@126.com")
                 .id(2L)
                 .build();
-
-        if(!userRepository.findById(user.getId()).isPresent()){
-            userRepository.save(user);
+        User user2 = User.builder()
+                .name("zhangxiaob")
+                .email("zb@qq.com")
+                .id(3L)
+                .build();
+        User user3 = User.builder()
+                .name("wangxiaod")
+                .email("wxd@example.com")
+                .id(4L)
+                .build();
+        User user4 = User.builder()
+                .name("zhangsan")
+                .email("zangsan@example.com")
+                .id(5L)
+                .build();
+        if(!userRepository.findById(user1.getId()).isPresent()){
+            userRepository.save(user1);
         }
 
-        List<User> users = userRepository.findByNameAndId("ybqdren", 2L);
-        System.out.println(users.get(0));
+        if(!userRepository.findById(user2.getId()).isPresent()){
+            userRepository.save(user2);
+        }
+
+        if(!userRepository.findById(user3.getId()).isPresent()){
+            userRepository.save(user3);
+        }
+
+        if(!userRepository.findById(user4.getId()).isPresent()){
+            userRepository.save(user4);
+        }
+
+/*        List<User> users = userRepository.findByNameAndId("ybqdren", 2L);
+        System.out.println(users.get(0));*/
     }
 }

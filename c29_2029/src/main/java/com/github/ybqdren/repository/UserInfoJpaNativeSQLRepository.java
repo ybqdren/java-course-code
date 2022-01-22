@@ -1,6 +1,5 @@
 package com.github.ybqdren.repository;
 
-import com.github.ybqdren.entity.User;
 import com.github.ybqdren.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,6 +13,8 @@ import java.util.List;
  * @description
  *
  * 使用注解的方式操作数据库 （原始的 sql 语句）
+ *
+ *
  **/
 public interface UserInfoJpaNativeSQLRepository extends JpaRepository<UserInfo, Long> {
 
@@ -24,5 +25,4 @@ public interface UserInfoJpaNativeSQLRepository extends JpaRepository<UserInfo, 
     @Query(value = "SELECT * FROM user_info WHERE first_name = ?1 ORDER BY ?2",nativeQuery = true)
     List<UserInfo> findByFirstName(String firstName , String sort);
 
-    
 }

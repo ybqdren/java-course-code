@@ -1,6 +1,7 @@
 package com.github.ybqdren.repository;
 
 import com.github.ybqdren.entity.User;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -27,6 +28,13 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
 /*    @Query(value = "SELECT * FROM USER WHERE EMAIL = ?1",nativeQuery = true)
     User findByEmail(String email);*/
 
+    /** 注意： Native Query 不支持直接 Sort 的参数查询 */
+    /** 错误写法 */
+/*    @Query(value = "select * from user where name = ?1" , nativeQuery = true)
+    List<User> findById(String name , Sort sort);*/
+    /** 正确写法 */
+    @Query(value = "select * from user where name = ?1 order by ?2" , nativeQuery = true)
+    List<User> findById(String name , String sort);
 
 
 }
