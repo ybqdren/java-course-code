@@ -36,5 +36,16 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query(value = "select * from user where name = ?1 order by ?2" , nativeQuery = true)
     List<User> findById(String name , String sort);
 
+    /** Query 排序 */
+    /*
+        在排序实例中实际使用的属性需要与实体模型里面的字段相匹配，着意味着它们需要解析为查询中使用的属性或别名。
+        这是一个 state_field_path_expression JPQL 定义，并且 Sort 的对象支持一些特定的函数。
+     */
+    @Query("select u from User u where u.name like ?1%")
+    List<User> findByAndSort(String name , Sort sort);
+
+    @Query("select u.id , LENGTH(u.name) as fn_len from User u where u.name like ?1%")
+    List<Object[] > findByAsArrayAndSort(String name , Sort sort);
+
 
 }

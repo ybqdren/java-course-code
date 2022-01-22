@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
+
 import java.util.List;
 
 /**
@@ -61,8 +63,18 @@ public class SpringDataJpaTestApplication {
         fields.add("name");
         Sort sort = Sort.by("name");
 //        Sort sort = new Sort(Sort.Direction.DESC,fields);*/
+        // 这里的 name 指的是数据库里面的字段名，而不是对象的字段名
         List<User> user = userJpaRepository.findById("ybqdren","name");
         System.out.println(user);
+
+        user = userJpaRepository.findByAndSort("ybqdren",Sort.by("name"));
+        System.out.println(user);
+
+/*        user = userJpaRepository.findByAndSort("ybqdren",Sort.by("LENGTH(name)"));
+        System.out.println(user);*/
+
+        List<Object[]> userObject = userJpaRepository.findByAsArrayAndSort("ybqdren",Sort.by("fn_len"));
+        System.out.println(userObject.size());
     }
 
     /** 注解查询  使用原始的 sql */
