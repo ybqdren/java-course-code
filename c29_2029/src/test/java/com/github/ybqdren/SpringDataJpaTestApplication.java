@@ -8,6 +8,7 @@ import com.github.ybqdren.repository.UserJpaRepository;
 import com.github.ybqdren.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
@@ -37,7 +38,16 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserInfoJpaNativeSQLRepository userInfoJpaNativeSQLRepository;
 
+    @Value("${my.name}")
+    private String myName;
 
+    @Value("${my.email}")
+    private String myEmail;
+
+    @Test
+    void testGetMyInfoFromAppliationYmlFile(){
+        System.out.println(myName + "~~" +myEmail);
+    }
 
     @Test
     void testQueryByExampleExecutor(){
@@ -136,8 +146,8 @@ public class SpringDataJpaTestApplication {
     @Test
     void contextLoads(){
         User user1 = User.builder()
-                .name("ybqdren")
-                .email("withzhaowen@126.com")
+                .name(myName)
+                .email(myEmail)
                 .id(2L)
                 .build();
         User user2 = User.builder()

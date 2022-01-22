@@ -18,3 +18,8 @@ spring:
 logging:
   level:
     com.github.ybqdren: debug
+
+
+my:
+  name: ybqdren
+  email: withzhaowen@126.com
