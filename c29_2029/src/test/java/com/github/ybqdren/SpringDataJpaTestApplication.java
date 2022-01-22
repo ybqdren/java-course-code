@@ -40,6 +40,7 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserInfoJpaNativeSQLRepository userInfoJpaNativeSQLRepository;
 
+    /** 从 application.yml 文件中根据 key 取 value */
     @Value("${my.name}")
     private String myName;
 
