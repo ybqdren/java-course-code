@@ -52,4 +52,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     /** Query 分页 */
     @Query(value = "select u from User u where u.name = ?1")
     Page<User> findByName(String name , Pageable pageable);
+
+
+
 }

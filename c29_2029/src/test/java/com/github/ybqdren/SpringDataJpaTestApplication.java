@@ -2,10 +2,7 @@ package com.github.ybqdren;
 
 import com.github.ybqdren.entity.User;
 import com.github.ybqdren.entity.UserInfo;
-import com.github.ybqdren.repository.UserInfoJpaNativeSQLRepository;
-import com.github.ybqdren.repository.UserJpaNativeSQLRepository;
-import com.github.ybqdren.repository.UserJpaRepository;
-import com.github.ybqdren.repository.UserRepository;
+import com.github.ybqdren.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +39,9 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserInfoJpaNativeSQLRepository userInfoJpaNativeSQLRepository;
 
+    @Autowired
+    UserRepositoryNativeSQL userRepositoryNativeSQL;
+
     /** 从 application.yml 文件中根据 key 取 value */
     @Value("${my.name}")
     private String myName;
@@ -62,8 +62,13 @@ public class SpringDataJpaTestApplication {
     /** 分页 */
     @Test
     void queryPage(){
+        /** Page 2 of 1 containing UNKNOWN instances */
         Page<User> users =  userJpaRepository.findByName("ybqdren" , PageRequest.of(1,10));
         System.out.println(users);
+
+        /** Page 2 of 2 containing com.github.ybqdren.entity.User instances */
+        Page<User> userPages = userRepositoryNativeSQL.findByName("ybqdren",PageRequest.of(1,10,Sort.Direction.DESC,"name"));
+        System.out.println(userPages);
     }
 
     /** 排序 */
