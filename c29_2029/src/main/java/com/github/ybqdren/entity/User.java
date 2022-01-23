@@ -14,7 +14,7 @@ import javax.persistence.*;
  * @description
  **/
 
-@Entity
+@Entity(name = "User")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

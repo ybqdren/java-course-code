@@ -42,6 +42,9 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserRepositoryNativeSQL userRepositoryNativeSQL;
 
+    @Autowired
+    UserSpELRepository userSpELRepository;
+
     /** 从 application.yml 文件中根据 key 取 value */
     @Value("${my.name}")
     private String myName;
@@ -57,6 +60,24 @@ public class SpringDataJpaTestApplication {
     @Test
     void testQueryByExampleExecutor(){
 
+    }
+
+    @Test
+    void queryBySpEL(){
+        /**
+         Hibernate:
+            select user0_.id as id1_0_,
+                    user0_.email as email2_0_,
+                    user0_.name as name3_0_
+            from user user0_
+            where user0_.name=?
+
+         ybqdren~withzhaowen@126.com
+         */
+        List<User> users = userSpELRepository.findByName("ybqdren");
+        for(User user : users){
+            System.out.println(user.getName() + "~" +user.getEmail());
+        }
     }
 
     /** 使用 Param 注解来绑定参数 */
