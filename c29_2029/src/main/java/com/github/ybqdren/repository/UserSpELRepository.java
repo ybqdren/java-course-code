@@ -9,7 +9,8 @@ import java.util.List;
 /**
  * @author zhao wen
  * @since 1.0.0
- * <h1> 使用 SpEl 表达式 </h1>
+ * <h1> 使用 SpEL 表达式 </h1>
+ * <p> SpEL 比较适合自定义的 Repository </p>
  **/
 public interface UserSpELRepository extends JpaRepository<User, Long> {
     /** 直接通过 entity 的 name 去查， jpa 会自动去找*/
