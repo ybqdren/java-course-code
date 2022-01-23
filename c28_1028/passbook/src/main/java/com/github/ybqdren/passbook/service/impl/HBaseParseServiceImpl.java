@@ -12,6 +12,7 @@ import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Mutation;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,45 +65,45 @@ public class HBaseParseServiceImpl implements IHBasePassService {
         }
 
 
-        /** 写入 hbase */
+        // 写入 hbase
         Put put = new Put(Bytes.toBytes(rowKey));
 
-        /** 填充第一列 列族 B */
+        // 填充第一列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.ID),
                 Bytes.toBytes(passTemplate.getId())
         );
 
-        /** 填充第二列 列族 B */
+        // 填充第二列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.TITLE),
                 Bytes.toBytes(passTemplate.getTitle())
         );
 
-        /** 填充第三列 列族 B */
+        // 填充第三列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.SUMMARY),
                 Bytes.toBytes(passTemplate.getSummary())
         );
 
-        /** 填充第四列 列族 B */
+        // 填充第四列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.DESC),
                 Bytes.toBytes(passTemplate.getDesc())
         );
 
-        /** 填充第五列 列族 B */
+        // 填充第五列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.HAS_TOKEN),
                 Bytes.toBytes(passTemplate.getHasToken())
         );
 
-        /** 填充第六列 列族 B */
+        // 填充第六列 列族 B
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.BACKGROUND),
@@ -110,21 +111,21 @@ public class HBaseParseServiceImpl implements IHBasePassService {
         );
 
 
-        /** 填充第一列 列族 C */
+        // 填充第一列 列族 C
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_C),
                 Bytes.toBytes(Constants.PassTemplateTable.LIMIT),
                 Bytes.toBytes(passTemplate.getLimit())
         );
 
-        /** 填充第二列 列族 C  */
+        // 填充第二列 列族 C
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.START),
                 Bytes.toBytes(DateFormatUtils.ISO_DATE_FORMAT.format(passTemplate.getStart()))
         );
 
-        /** 填充第三列 列族 C  */
+        // 填充第三列 列族 C
         put.addColumn(
                 Bytes.toBytes(Constants.PassTemplateTable.FAMILY_B),
                 Bytes.toBytes(Constants.PassTemplateTable.END),
