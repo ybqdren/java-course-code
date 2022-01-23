@@ -44,6 +44,9 @@ public class UserPassServiceImpl implements IUserPassService {
         this.merchantsDao = merchantsDao;
     }
 
+    /** 优惠卷的状态信息 */
+
+
     @Override
     public Response getUserPassInfo(Long userId) throws Exception {
         return null;
