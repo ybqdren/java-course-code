@@ -12,7 +12,7 @@ import org.apache.hadoop.hbase.util.Bytes;
  * @author zhao wen
  * @since 1.0.0
  *
- * <h1> HBase PassTemplate Row To PassTemplate Object </h1>
+ * <h1> HBase Pass Row To PassTemplate Object </h1>
  **/
 public class PassRowMapper implements RowMapper<Pass> {
 

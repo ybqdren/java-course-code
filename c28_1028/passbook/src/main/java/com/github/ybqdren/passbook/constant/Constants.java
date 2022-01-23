@@ -126,7 +126,7 @@ public class Constants {
         public static final String TABLE_NAME = "pb:feedback";
 
         /** 信息列族 */
-        public static final String FAMILY_B = "i";
+        public static final String FAMILY_I = "i";
 
         /** 用户 id */
         public static final String USER_ID = "user_id";
