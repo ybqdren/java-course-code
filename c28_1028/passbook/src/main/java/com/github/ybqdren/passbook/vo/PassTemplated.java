@@ -15,7 +15,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PassRemplated {
+public class PassTemplated {
 
     /** 所属商户 id */
     private Integer id;

@@ -78,8 +78,11 @@ public class Constants {
         /** 优惠卷背景色 */
         public static final String BACKGROUND = "background";
 
+        /** 优惠卷信息列族 */
+        public static final String FAMILY_C = "c";
+
         /** 最大个数限制 */
-        public static final String FAMILY_C = "limit";
+        public static final String LIMIT = "limit";
 
         /** 优惠卷开始时间 */
         public static final String START = "start";
