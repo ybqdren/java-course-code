@@ -2,6 +2,7 @@ package com.github.ybqdren.passbook.utils;
 
 
 import com.github.ybqdren.passbook.vo.Feedback;
+import com.github.ybqdren.passbook.vo.GainPassTemplateRequest;
 import com.github.ybqdren.passbook.vo.PassTemplate;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.mortbay.log.Log;
@@ -31,6 +32,19 @@ public class RowKeyGenUtil {
         return rowKey;
     }
 
+    /**
+     * <h2> 根据提供的领取优惠卷请求生成 RowKey ，只可以在领取优惠卷的时候使用 </h2>
+     * Pass RowKey - reversed(userId) + inverse(timestamp) + PassTemplate RowKey       // inverse = Long.MAX_VALUE - System.currentTimeMillis()
+     *                                                                                 // 可以根据 RowKey 去判断哪些用户领取了优惠卷
+     * @param request {@link GainPassTemplateRequest}
+     * @return String RowKey
+     */
+    public static String genPassRowKey(GainPassTemplateRequest request){
+        return new StringBuilder(String.valueOf(request.getUserId())).reverse().toString()
+                + (Long.MAX_VALUE - System.currentTimeMillis())
+                + genPassTemplateRowKey(request.getPassTemplate());
+    }
+
     /***
      * <h2> 根据 Feedback 构造 RowKey </h2>
      * @param feedback {@link Feedback}
@@ -47,7 +61,7 @@ public class RowKeyGenUtil {
          * 会让他又不同的前缀，所以也是保证数据的合理分散，将不同用户的数据分散到不同节点上
          *
          * 当前的时间戳就是用户的 feedback 的时间，这样设计可以保证越晚创建的 feedback 在前面，而越晚创建就在后面
-         * 这样我们进行查询时，就可以提供速度。
+         * 这样我们进行查询时，就可以提高速度。
          * */
         return new StringBuilder(String.valueOf(feedback.getUserId())).reverse().toString() +
                 (Long.MAX_VALUE - System.currentTimeMillis());     // 时间戳
