@@ -2,7 +2,6 @@ package com.github.ybqdren.passbook.mapper;
 
 import com.github.ybqdren.passbook.constant.Constants;
 import com.github.ybqdren.passbook.vo.Pass;
-import com.github.ybqdren.passbook.vo.PassTemplated;
 import com.spring4all.spring.boot.starter.hbase.api.RowMapper;
 import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.hadoop.hbase.client.Result;

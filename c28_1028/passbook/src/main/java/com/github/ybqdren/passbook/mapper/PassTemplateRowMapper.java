@@ -1,7 +1,7 @@
 package com.github.ybqdren.passbook.mapper;
 
 import com.github.ybqdren.passbook.constant.Constants;
-import com.github.ybqdren.passbook.vo.PassTemplated;
+import com.github.ybqdren.passbook.vo.PassTemplate;
 import com.spring4all.spring.boot.starter.hbase.api.RowMapper;
 import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.hadoop.hbase.client.Result;
@@ -13,7 +13,7 @@ import org.apache.hadoop.hbase.util.Bytes;
  *
  * <h1> HBase PassTemplate Row To PassTemplate Object </h1>
  **/
-public class PassTemplateRowMapper implements RowMapper<PassTemplated> {
+public class PassTemplateRowMapper implements RowMapper<PassTemplate> {
 
     /** 第一个列族 和属性 */
     private static byte[] FAMILY_B = Constants.PassTemplateTable.FAMILY_B.getBytes();
@@ -31,23 +31,23 @@ public class PassTemplateRowMapper implements RowMapper<PassTemplated> {
     private static byte[] END = Constants.PassTemplateTable.END.getBytes();
 
     @Override
-    public PassTemplated mapRow(Result result, int i) throws Exception {
-        PassTemplated passTemplated = new PassTemplated();
-        passTemplated.setId(Bytes.toInt(result.getValue(FAMILY_B,ID)));
-        passTemplated.setTitle(Bytes.toString(result.getValue(FAMILY_B,TITLE)));
-        passTemplated.setSummary(Bytes.toString(result.getValue(FAMILY_B,SUMMARY)));
-        passTemplated.setDesc(Bytes.toString(result.getValue(FAMILY_B,DESC)));
-        passTemplated.setHasToken(Bytes.toBoolean(result.getValue(FAMILY_B,HAS_TOKEN)));
-        passTemplated.setBackground(Bytes.toInt(result.getValue(FAMILY_B,BACKGROUND)));
+    public PassTemplate mapRow(Result result, int i) throws Exception {
+        PassTemplate passTemplate = new PassTemplate();
+        passTemplate.setId(Bytes.toInt(result.getValue(FAMILY_B,ID)));
+        passTemplate.setTitle(Bytes.toString(result.getValue(FAMILY_B,TITLE)));
+        passTemplate.setSummary(Bytes.toString(result.getValue(FAMILY_B,SUMMARY)));
+        passTemplate.setDesc(Bytes.toString(result.getValue(FAMILY_B,DESC)));
+        passTemplate.setHasToken(Bytes.toBoolean(result.getValue(FAMILY_B,HAS_TOKEN)));
+        passTemplate.setBackground(Bytes.toInt(result.getValue(FAMILY_B,BACKGROUND)));
 
 //        String[] patterns = new String[]{"yyyy-MM-dd"};
 //        String[] patterns = new String[]{"yyyy-MM-dd"};
 
         // hbase 中存储的是字节数组，所以如果时间原类型为时间，最好是转换一下
-        passTemplated.setLimit(Bytes.toLong(result.getValue(FAMILY_C,LIMIT)));
-        passTemplated.setStart(DateUtil.parseDate(Bytes.toString(result.getValue(FAMILY_C,START))));
-        passTemplated.setEnd(DateUtil.parseDate(Bytes.toString(result.getValue(FAMILY_C,END))));
+        passTemplate.setLimit(Bytes.toLong(result.getValue(FAMILY_C,LIMIT)));
+        passTemplate.setStart(DateUtil.parseDate(Bytes.toString(result.getValue(FAMILY_C,START))));
+        passTemplate.setEnd(DateUtil.parseDate(Bytes.toString(result.getValue(FAMILY_C,END))));
 
-        return passTemplated;
+        return passTemplate;
     }
 }
