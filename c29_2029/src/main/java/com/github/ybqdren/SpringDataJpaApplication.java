@@ -1,8 +1,10 @@
 package com.github.ybqdren;
 
+import com.github.ybqdren.repository.MyAuditoAware;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 
@@ -19,5 +21,9 @@ import org.springframework.data.repository.query.QueryLookupStrategy;
 public class SpringDataJpaApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringDataJpaApplication.class);
+    }
+
+    public AuditorAware<Integer> auditorProvider(){
+        return new MyAuditoAware();
     }
 }

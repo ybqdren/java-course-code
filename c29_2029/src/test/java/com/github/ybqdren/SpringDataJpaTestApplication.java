@@ -1,6 +1,7 @@
 package com.github.ybqdren;
 
 import com.github.ybqdren.entity.User;
+import com.github.ybqdren.entity.UserCustomerEntity;
 import com.github.ybqdren.entity.UserInfo;
 import com.github.ybqdren.repository.*;
 import org.junit.jupiter.api.Test;
@@ -45,12 +46,28 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserSpELRepository userSpELRepository;
 
+    @Autowired
+    UserCustomerRepository userCustomerRepository;
+
     /** 从 application.yml 文件中根据 key 取 value */
     @Value("${my.name}")
     private String myName;
 
     @Value("${my.email}")
     private String myEmail;
+
+    /** 开启 jpa 的审计 */
+    @Test
+    void testAudingJpa(){
+        /**
+         Hibernate: select usercustom0_.id as id1_0_0_, usercustom0_.create_time as create_t2_0_0_, usercustom0_.create_user_id as create_u3_0_0_, usercustom0_.cuctomer_email as cuctomer4_0_0_, usercustom0_.customer_name as customer5_0_0_, usercustom0_.last_modified_time as last_mod6_0_0_, usercustom0_.last_modified_user_id as last_mod7_0_0_ from user_customer usercustom0_ where usercustom0_.id=?
+         Hibernate: insert into user_customer (create_time, create_user_id, cuctomer_email, customer_name, last_modified_time, last_modified_user_id) values (?, ?, ?, ?, ?, ?)
+         */
+        userCustomerRepository.save(UserCustomerEntity.builder()
+                                        .customerName("zhangsan")
+                                        .id(1)
+                                        .build());
+    }
 
     @Test
     void testGetMyInfoFromAppliationYmlFile(){
