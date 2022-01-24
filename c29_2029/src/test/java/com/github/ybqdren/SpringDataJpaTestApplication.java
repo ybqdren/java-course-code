@@ -1,8 +1,6 @@
 package com.github.ybqdren;
 
-import com.github.ybqdren.entity.User;
-import com.github.ybqdren.entity.UserCustomerEntity;
-import com.github.ybqdren.entity.UserInfo;
+import com.github.ybqdren.entity.*;
 import com.github.ybqdren.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,12 +47,26 @@ public class SpringDataJpaTestApplication {
     @Autowired
     UserCustomerRepository userCustomerRepository;
 
+    @Autowired
+    OrderQueryJpaRepository orderQueryJpaRepository;
+
     /** 从 application.yml 文件中根据 key 取 value */
     @Value("${my.name}")
     private String myName;
 
     @Value("${my.email}")
     private String myEmail;
+
+
+    /** 监听订单变化 */
+    @Test
+    void testOrderListener(){
+        ExMember exMember = new ExMember();
+        exMember.setName("小王");
+        exMember.setPhone("13009944443");
+        ExOrderOfRecharge orderOfRecharge = new ExOrderOfRecharge(exMember,100);
+        orderQueryJpaRepository.save(orderOfRecharge);
+    }
 
     /** 开启 jpa 的审计 */
     @Test

@@ -7,25 +7,42 @@ package com.github.ybqdren.entity;
 import com.github.ybqdren.common.enums.OrderStatusEnum;
 import com.github.ybqdren.listener.OrderStatusAuditListener;
 import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
+
+
 /**
  * 会员充值订单
+ * 实体字段中包含对象的解决办法：
+ *      关联的对象不是实体
+ *       - https://blog.csdn.net/Ditto_zhou/article/details/80829087 <JPA实体中字段映射补充和嵌入对象>
+ *
+ *      关联的对象是实体
+ *
+ * 多对一关系  ManyToOne 注解：
+ *  - https://www.hxstrive.com/subject/open_jpa.htm?id=565 <@ManyToOne 注解>
+ *  - https://blog.csdn.net/dbc_121/article/details/104997083 <讲明白Spring Data JPA实体关联注解>
  */
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @EntityListeners({AuditingEntityListener.class , OrderStatusAuditListener.class})
 @Table(name = "ex_order_of_recharge")
 public class ExOrderOfRecharge {
+
+    public ExOrderOfRecharge(ExMember customer, Integer rechargeAmount) {
+        this.customer = customer;
+        this.rechargeAmount = rechargeAmount;
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +59,8 @@ public class ExOrderOfRecharge {
      * 会员
      */
     @NotNull
-    @ManyToOne
-    @Column(name = "customer")
+    @Embedded
+        @AttributeOverride(name = "name", column = @Column(name = "name"))
     private ExMember customer;
 
     /* 订单支付相关 */
