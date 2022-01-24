@@ -65,7 +65,7 @@ public class SpringDataJpaTestApplication {
          */
         userCustomerRepository.save(UserCustomerEntity.builder()
                                         .customerName("zhangsan")
-                                        .id(1)
+                                        .id(2)
                                         .build());
     }
 
