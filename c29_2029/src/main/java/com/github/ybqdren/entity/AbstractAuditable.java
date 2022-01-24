@@ -1,9 +1,5 @@
 package com.github.ybqdren.entity;
 
-import com.github.ybqdren.repository.MyAuditoAware;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,32 +11,14 @@ import java.util.Date;
 
 /**
  * @author Wen(Joan) Zhao
- * @time 2022/1/24 15:09
- * @package com.github.ybqdren.entity
- * @description  Auditing 及其事件详解
- *
- * Spring Data JPA 为我们提供了审计功能的架构实现：
- *  提供了四个注解专门解决这个事情：
- *      - CreateBy 哪个用户创建的
- *      - CreatedDate 创建的时间
- *      - LastModifiedBy 修改实体的用户
- *      - LastModifiedDate 最后一次修改时间
- *
- *
- * 开启审计的步骤：
- *  1. 在实体中添加注解 {@link UserCustomerEntity}
- *  2. 实现审计类，让 JPA 知道当前的用户是谁 {@link MyAuditoAware}
- *  3. 在启动类中开启 JPA 的审计功能 {@link com.github.ybqdren.SpringDataJpaApplication} 声明 bean 使用 @EnableJpaAuditing 开启
+ * @time 2022/1/24 15:39
+ * @package com.github.ybqdren.auding
+ * @description
  **/
 
-
-@Entity
-@Table(name = "user_customer" ,schema = "test" , catalog = "")
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserCustomerEntity {
+public abstract class AbstractAuditable {
     @Id
     @Column(name = "id" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
