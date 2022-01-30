@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<link href="css/header.css"  rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	// 初始化 mui 
+		mui.init();
+		
+		// 设置收集导航栏的颜色 
+		mui.plusReady(function(){
+			plus.navigator.setStatusBarStyle("EC971F");
+			plus.navigator.setStatusBarBackground("#EC971F");
+		});
+    </script>
+</head>
+<body>
+	<!-- 顶部标题 -->
+	<header class="mui-bar mui-bar-nav title">
+		<h1 class="mui-title title-color"><b>ISend</b></h1>
+	</header>
+	
+	<!-- 底部菜单 -->
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" tabindex="0">
+			<span class="mui-icon mui-icon-paperplane"></span>
+			<span class="mui-tab-label">我送</span>
+		</a>
+		<a class="mui-tab-item" tabindex="1">
+			<span class="mui-icon mui-icon-contact"></span>
+			<span class="mui-tab-label">通讯录</span>
+		</a>
+		<a class="mui-tab-item" tabindex="2">
+			<span class="mui-icon mui-icon-search"></span>
+			<span class="mui-tab-label">发现</span>
+		</a>
+		<a class="mui-tab-item" tabindex="3">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">我</span>
+		</a>
+	</nav>
+	
+	<script type="text/javascript">
+		// 底部菜单切换 
+		var isendArr = [
+			{
+				pageId:"isend-chatlist.html",
+				pageUrl:"isend-chatlist.html",
+			},
+			{
+				pageId:"isend-contact.html",
+				pageUrl:"isend-contact.html",
+			},
+			{
+				pageId:"isend-find.html",
+				pageUrl:"isend-find.html",
+			},
+			{
+				pageId:"isend-me.html",
+				pageUrl:"isend-me.html",
+			}
+		];
+		
+		// 子页面的样式，防止遮挡底部 tab 
+		var isendStyle = {
+			top:"44px",
+			bottom:"50px"
+		};
+		
+		// 将不同的子页面追加进来 
+		mui.plusReady(function(){
+			// 获取当前的 webview 对象
+			var indexWebView = plus.webview.currentWebview();
+			
+			// 向当前的主页 webview 追加子页的 4 张 webview 对象
+			for(var i=0 ;i<isendArr.length ;i++){
+				var isendPage = plus.webview.create(isendArr[i].pageUrl , 
+				                                    isendArr[i].pageId ,
+													isendStyle);
+				// 隐藏 webview 窗口
+				isendPage.hide();
+				// 追加每一个子页面到当前主页面
+				indexWebView.append(isendPage);
+			}
+			
+			plus.webview.show(isendArr[0].pageId);
+		
+			// 批量绑定 tab 事件，展示不同的页面
+			mui(".mui-bar-tab").on("tap" , "a" , function(){
+				var tabindex = this.getAttribute("tabindex");
+				
+				// 显示点击的 tab 选项对应的页面 
+				plus.webview.show(isendArr[tabindex].pageId , "fade-in" , 200);
+			
+			    // 隐藏其他页面
+				for(var i=0 ;i<isendArr.length ;i++){
+					if(i != tabindex){
+						plus.webview.hide(isendArr[i].pageId , "fade-out" , 200);
+					}
+				}
+			});
+		});
+				
+	</script>
+</body>
+</html>
