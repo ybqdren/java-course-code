@@ -26,9 +26,8 @@ public class ChatMsg {
 
     /**
      * 消息是否签收状态
-1：签收
-0：未签收
-
+        1：签收
+        0：未签收
      */
     @Column(name = "sign_flag")
     private Integer signFlag;
@@ -105,14 +104,11 @@ public class ChatMsg {
 
     /**
      * 获取消息是否签收状态
-1：签收
-0：未签收
+        1：签收
+        0：未签收
 
      *
      * @return sign_flag - 消息是否签收状态
-1：签收
-0：未签收
-
      */
     public Integer getSignFlag() {
         return signFlag;
