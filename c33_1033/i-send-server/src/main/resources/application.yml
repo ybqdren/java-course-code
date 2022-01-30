@@ -32,3 +32,18 @@ fdfs:
     height: 80
 
 
+
+# config: mybatis
+mybatis:
+  type-aliases-package: com.github.ybqdren.isendserver.pojo
+  mapper-locations: class:mapper/*.xml
+mapper:
+  mappers: com.github.ybqdren.isendserver.utils.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+# config: pagehelper
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql
