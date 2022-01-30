@@ -19,6 +19,66 @@ import io.netty.util.CharsetUtil;
  **/
 public class CustomeHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 注册");
+        super.channelRegistered(ctx);
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 移除");
+        super.channelUnregistered(ctx);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 活跃中");
+        super.channelActive(ctx);
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 不活跃");
+        super.channelInactive(ctx);
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 读取完毕");
+        super.channelReadComplete(ctx);
+    }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        System.out.println("Channel ... 用户事件触发");
+        super.userEventTriggered(ctx, evt);
+    }
+
+    @Override
+    public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 可写更改");
+        super.channelWritabilityChanged(ctx);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println("Channel ... 捕获到异常");
+        super.exceptionCaught(ctx, cause);
+    }
+
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 助手类增加");
+        super.handlerAdded(ctx);
+    }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel ... 助手类移除");
+        super.handlerRemoved(ctx);
+    }
+
+    @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
         // 从上下文中获取 channel
         Channel channel = ctx.channel();
