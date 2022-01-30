@@ -27,7 +27,7 @@ public class HelloServer {
         // netty 服务器的创建，ServerBootstrap 是一个启动类
         serverBootstrap.group(bossGroup , workGroup)           // 设置主从线程组
                         .channel(NioServerSocketChannel.class) // 设置 nio 的双向通道
-                        .childHandler(null);                    // 子处理器（可自实现），用于处理 workerGroup
+                        .childHandler(new HelloServerInitializer()); // 子处理器（可自实现），用于处理 workerGroup
 
         try {
             // 启动服务器,设置端口号他，同时启动方式为同步
