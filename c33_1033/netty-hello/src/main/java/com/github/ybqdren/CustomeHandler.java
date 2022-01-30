@@ -23,27 +23,30 @@ public class CustomeHandler extends SimpleChannelInboundHandler<HttpObject> {
         // 从上下文中获取 channel
         Channel channel = ctx.channel();
 
-        // 显示客户端的远程地址
-        System.out.println(channel.remoteAddress());
+        if(msg instanceof HttpRequest){
+            // 显示客户端的远程地址
+            System.out.println(channel.remoteAddress());
 
-        // 深拷贝 buffer
-        // 定义发送的数据消息
-        ByteBuf content = Unpooled.copiedBuffer("Hello netty ~" , CharsetUtil.UTF_8);
+            // 深拷贝 buffer
+            // 定义发送的数据消息
+            ByteBuf content = Unpooled.copiedBuffer("Hello netty ~" , CharsetUtil.UTF_8);
 
-        // 构建一个 http.response
-        FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1 ,
-                                                                HttpResponseStatus.OK,
-                                                                content);
+            // 构建一个 http.response
+            FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1 ,
+                    HttpResponseStatus.OK,
+                    content);
 
-        // 为相应增加数据类型和长度
-        // 设置数据类型
-        response.headers().set(HttpHeaderNames.CONTENT_TYPE , "test/plain");
+            // 为相应增加数据类型和长度
+            // 设置数据类型
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE , "test/plain");
 
-        // 设置数据长度
-        response.headers().set(HttpHeaderNames.CONTENT_TYPE , content.readableBytes());
+            // 设置数据长度
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE , content.readableBytes());
 
-        // 把相应发送到客户端
+            // 把相应发送到客户端
 //        channel.write() 只写入缓冲区，而不会发送到客户端
-        channel.writeAndFlush(response);   // 写 并刷新到客户端
+            channel.writeAndFlush(response);   // 写 并刷新到客户端
+        }
+
     }
 }
