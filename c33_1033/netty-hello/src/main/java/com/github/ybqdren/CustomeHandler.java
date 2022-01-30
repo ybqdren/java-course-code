@@ -38,10 +38,10 @@ public class CustomeHandler extends SimpleChannelInboundHandler<HttpObject> {
 
             // 为相应增加数据类型和长度
             // 设置数据类型
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE , "test/plain");
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE , "text/plain");
 
             // 设置数据长度
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE , content.readableBytes());
+            response.headers().set(HttpHeaderNames.CONTENT_LENGTH , content.readableBytes());
 
             // 把相应发送到客户端
 //        channel.write() 只写入缓冲区，而不会发送到客户端
