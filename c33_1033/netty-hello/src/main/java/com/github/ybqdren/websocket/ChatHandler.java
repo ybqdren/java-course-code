@@ -36,11 +36,11 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
                                                               + "接收到消息 ， 消息为："  + content);
         }
 
-/*        // 下面这个方法和下面这个 for 循环一致
+        // 下面这个方法和下面这个 for 循环一致
         clients.writeAndFlush(
                 new TextWebSocketFrame(
                         "[服务器接收到消息：]" + LocalDateTime.now())
-                        + "接收到消息 ， 消息为："  + content);*/
+                        + "接收到消息 ， 消息为："  + content);
     }
 
     // 将消息转发给客户端，每个客户端对应着每个 channel
