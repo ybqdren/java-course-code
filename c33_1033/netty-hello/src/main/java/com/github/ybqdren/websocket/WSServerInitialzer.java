@@ -32,14 +32,15 @@ public class WSServerInitialzer extends ChannelInitializer<SocketChannel> {
         /**
          * websocket 服务器处理的协议，用于指定给客户端连接访问的路由： /ws
          *
-         * 本 handler 会帮你处理一些繁重的复杂的事
-         * 会帮你处理握手动作：handshaking (close ping pong) ping + pong = 心跳
-         * 对于 websocket 来讲，都是以 frames 进行传输的，不同的数据类型对应的 frames 也不同
+         * <p>
+         *     本 handler 会帮你处理一些繁重的复杂的事
+         *     会帮你处理握手动作：handshaking (close ping pong) ping + pong = 心跳
+         *     对于 websocket 来讲，都是以 frames 进行传输的，不同的数据类型对应的 frames 也不同
+         * </p>
          * */
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
 
         // 自定义的 handler
         pipeline.addLast(null);
-
     }
 }
