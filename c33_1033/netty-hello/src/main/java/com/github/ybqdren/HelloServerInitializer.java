@@ -23,6 +23,6 @@ public class HelloServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("HttpServerCodec" , new HttpServerCodec());
 
         // 自定义的 handler ，返回 "Hello Netty"
-        pipeline.addLast("customHandler" , null);
+        pipeline.addLast("customHandler" , new CustomeHandler());
     }
 }
