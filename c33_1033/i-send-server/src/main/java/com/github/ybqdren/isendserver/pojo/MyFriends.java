@@ -4,11 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * @author zhao wen
- * @since 1.0.0
- **/
-
 @Table(name = "my_friends")
 public class MyFriends {
     @Id
@@ -21,7 +16,6 @@ public class MyFriends {
     private String myUserId;
 
     /**
-     *
      * 用户的好友id
      */
     @Column(name = "my_friend_user_id")

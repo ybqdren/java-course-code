@@ -5,25 +5,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-/**
- * @author zhao wen
- * @since 1.0.0
- **/
-
 @Table(name = "chat_msg")
 public class ChatMsg {
     @Id
     private String id;
 
-    /**
-     * 发送者 id
-     */
     @Column(name = "send_user_id")
     private String sendUserId;
 
-    /**
-     * 接收者 id
-     */
     @Column(name = "accept_user_id")
     private String acceptUserId;
 
@@ -31,14 +20,15 @@ public class ChatMsg {
 
     /**
      * 消息是否签收状态
-        1：签收
-        0：未签收
+1：签收
+0：未签收
+
      */
     @Column(name = "sign_flag")
     private Integer signFlag;
 
     /**
-     * 发送请求的时间
+     * 发送请求的事件
      */
     @Column(name = "create_time")
     private Date createTime;
@@ -58,36 +48,28 @@ public class ChatMsg {
     }
 
     /**
-     * 获取发送者 id
-     *
-     * @return send_user_id - 发送者 id
+     * @return send_user_id
      */
     public String getSendUserId() {
         return sendUserId;
     }
 
     /**
-     * 设置发送者 id
-     *
-     * @param sendUserId 发送者 id
+     * @param sendUserId
      */
     public void setSendUserId(String sendUserId) {
         this.sendUserId = sendUserId;
     }
 
     /**
-     * 获取接收者 id
-     *
-     * @return accept_user_id - 接收者 id
+     * @return accept_user_id
      */
     public String getAcceptUserId() {
         return acceptUserId;
     }
 
     /**
-     * 设置接收者 id
-     *
-     * @param acceptUserId 接收者 id
+     * @param acceptUserId
      */
     public void setAcceptUserId(String acceptUserId) {
         this.acceptUserId = acceptUserId;
@@ -109,11 +91,14 @@ public class ChatMsg {
 
     /**
      * 获取消息是否签收状态
-        1：签收
-        0：未签收
+1：签收
+0：未签收
 
      *
      * @return sign_flag - 消息是否签收状态
+1：签收
+0：未签收
+
      */
     public Integer getSignFlag() {
         return signFlag;
@@ -135,18 +120,18 @@ public class ChatMsg {
     }
 
     /**
-     * 获取发送请求的时间
+     * 获取发送请求的事件
      *
-     * @return create_time - 发送请求的时间
+     * @return create_time - 发送请求的事件
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置发送请求的时间
+     * 设置发送请求的事件
      *
-     * @param createTime 发送请求的时间
+     * @param createTime 发送请求的事件
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
