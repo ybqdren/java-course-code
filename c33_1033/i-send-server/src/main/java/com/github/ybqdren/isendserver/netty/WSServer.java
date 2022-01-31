@@ -35,12 +35,12 @@ public class WSServer {
         server = new ServerBootstrap();
         server.group(mainGroup , subGroup)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(null);
+                .childHandler(new WSServerInitialzer());
     }
 
     // spring boot 整合时，不需要做同步，如果是在 main 方法中需要进行同步
     public void start(){
-        this.future = server.bind(8090);
+        this.future = server.bind(8089);
         log.info("{}" , "netty websocket server 启动完毕 ....");
     }
 }
