@@ -4,6 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author zhao wen
+ * @since 1.0.0
+ **/
+
 @Table(name = "my_friends")
 public class MyFriends {
     @Id

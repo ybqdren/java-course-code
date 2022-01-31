@@ -5,6 +5,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * @author zhao wen
+ * @since 1.0.0
+ **/
+
 @Table(name = "chat_msg")
 public class ChatMsg {
     @Id

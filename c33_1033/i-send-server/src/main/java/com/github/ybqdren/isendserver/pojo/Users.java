@@ -4,6 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * @author zhao wen
+ * @since 1.0.0
+ **/
+
 public class Users {
     /**
      * 主键id 用户id

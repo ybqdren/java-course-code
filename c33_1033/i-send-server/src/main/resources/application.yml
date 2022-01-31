@@ -4,6 +4,10 @@ server:
   tomcat:
     uri-encoding: utf-8
 
+# config: log
+logging:
+  level:
+    com.github.ybqdren.isendserver: debug
 
 spring:
   # config: jdbc-mysql
