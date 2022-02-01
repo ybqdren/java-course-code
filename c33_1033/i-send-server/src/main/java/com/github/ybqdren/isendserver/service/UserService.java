@@ -6,5 +6,12 @@ package com.github.ybqdren.isendserver.service;
  **/
 public interface UserService {
 
+    /**
+     * <h2> 判断用户名是否存在 </h2>
+     * @param username
+     * @return
+     */
     public boolean queryUesrnameIsExist(String username);
+
+
 }

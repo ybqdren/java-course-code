@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 public class Users {
+    /**
+     * 唯一标识，方便后面分库分表时使用
+     */
     @Id
     private String id;
 
@@ -23,6 +26,9 @@ public class Users {
     @Column(name = "face_image")
     private String faceImage;
 
+    /**
+     * 我的头像，大
+     */
     @Column(name = "face_image_big")
     private String faceImageBig;
 
@@ -36,6 +42,9 @@ public class Users {
      */
     private String qrcode;
 
+    /**
+     * 用户 id
+     */
     private String cid;
 
     /**
