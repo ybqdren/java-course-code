@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Table(name = "chat_msg")
-public class ChatMsg {
+public class ChatMsgPojo {
     @Id
     private String id;
 

@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Table(name = "friends_request")
-public class FriendsRequest {
+public class FriendsRequestPojo {
     @Id
     private String id;
 

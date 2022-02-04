@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "my_friends")
-public class MyFriends {
+public class MyFriendsPojo {
     @Id
     private String id;
 

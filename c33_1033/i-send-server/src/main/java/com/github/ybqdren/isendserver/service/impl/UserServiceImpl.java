@@ -4,10 +4,13 @@ import com.github.ybqdren.isendserver.dao.*;
 import com.github.ybqdren.isendserver.enums.MsgActionEnum;
 import com.github.ybqdren.isendserver.enums.MsgSignFlagEnum;
 import com.github.ybqdren.isendserver.enums.SearchFriendsStatusEnum;
-import com.github.ybqdren.isendserver.pojo.ChatMsg;
-import com.github.ybqdren.isendserver.pojo.FriendsRequest;
-import com.github.ybqdren.isendserver.pojo.MyFriends;
-import com.github.ybqdren.isendserver.pojo.Users;
+import com.github.ybqdren.isendserver.netty.DataContent;
+import com.github.ybqdren.isendserver.netty.UserChannelRel;
+import com.github.ybqdren.isendserver.netty.ChatMsg;
+import com.github.ybqdren.isendserver.pojo.ChatMsgPojo;
+import com.github.ybqdren.isendserver.pojo.FriendsRequestPojo;
+import com.github.ybqdren.isendserver.pojo.MyFriendsPojo;
+import com.github.ybqdren.isendserver.pojo.UsersPojo;
 import com.github.ybqdren.isendserver.pojo.vo.FriendRequestVO;
 import com.github.ybqdren.isendserver.pojo.vo.MyFriendsVO;
 import com.github.ybqdren.isendserver.service.UserService;
@@ -62,32 +65,32 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean queryUsernameIsExist(String username) {
 		
-		Users user = new Users();
+		UsersPojo user = new UsersPojo();
 		user.setUsername(username);
 		
-		Users result = userMapper.selectOne(user);
+		UsersPojo result = userMapper.selectOne(user);
 		
 		return result != null ? true : false;
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
-	public Users queryUserForLogin(String username, String pwd) {
+	public UsersPojo queryUserForLogin(String username, String pwd) {
 		
-		Example userExample = new Example(Users.class);
+		Example userExample = new Example(UsersPojo.class);
 		Criteria criteria = userExample.createCriteria();
 		
 		criteria.andEqualTo("username", username);
 		criteria.andEqualTo("password", pwd);
 		
-		Users result = userMapper.selectOneByExample(userExample);
+		UsersPojo result = userMapper.selectOneByExample(userExample);
 		
 		return result;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public Users saveUser(Users user) {
+	public UsersPojo saveUser(UsersPojo user) {
 		
 		String userId = sid.nextShort();
 		
@@ -113,13 +116,13 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public Users updateUserInfo(Users user) {
+	public UsersPojo updateUserInfo(UsersPojo user) {
 		userMapper.updateByPrimaryKeySelective(user);
 		return queryUserById(user.getId());
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
-	private Users queryUserById(String userId) {
+	public UsersPojo queryUserById(String userId) {
 		return userMapper.selectByPrimaryKey(userId);
 	}
 
@@ -127,7 +130,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Integer preconditionSearchFriends(String myUserId, String friendUsername) {
 
-		Users user = queryUserInfoByUsername(friendUsername);
+		UsersPojo user = queryUserInfoByUsername(friendUsername);
 		
 		// 1. 搜索的用户如果不存在，返回[无此用户]
 		if (user == null) {
@@ -140,12 +143,12 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		// 3. 搜索的朋友已经是你的好友，返回[该用户已经是你的好友]
-		Example mfe = new Example(MyFriends.class);
+		Example mfe = new Example(MyFriendsPojo.class);
 		Criteria mfc = mfe.createCriteria();
 		mfc.andEqualTo("myUserId", myUserId);
 		mfc.andEqualTo("myFriendUserId", user.getId());
-		MyFriends myFriendsRel = myFriendsMapper.selectOneByExample(mfe);
-		if (myFriendsRel != null) {
+		MyFriendsPojo myFriendsPojoRel = myFriendsMapper.selectOneByExample(mfe);
+		if (myFriendsPojoRel != null) {
 			return SearchFriendsStatusEnum.ALREADY_FRIENDS.status;
 		}
 		
@@ -154,8 +157,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
-	public Users queryUserInfoByUsername(String username) {
-		Example ue = new Example(Users.class);
+	public UsersPojo queryUserInfoByUsername(String username) {
+		Example ue = new Example(UsersPojo.class);
 		Criteria uc = ue.createCriteria();
 		uc.andEqualTo("username", username);
 		return userMapper.selectOneByExample(ue);
@@ -166,19 +169,19 @@ public class UserServiceImpl implements UserService {
 	public void sendFriendRequest(String myUserId, String friendUsername) {
 		
 		// 根据用户名把朋友信息查询出来
-		Users friend = queryUserInfoByUsername(friendUsername);
+		UsersPojo friend = queryUserInfoByUsername(friendUsername);
 		
 		// 1. 查询发送好友请求记录表
-		Example fre = new Example(FriendsRequest.class);
+		Example fre = new Example(FriendsRequestPojo.class);
 		Criteria frc = fre.createCriteria();
 		frc.andEqualTo("sendUserId", myUserId);
 		frc.andEqualTo("acceptUserId", friend.getId());
-		FriendsRequest friendRequest = friendsRequestMapper.selectOneByExample(fre);
+		FriendsRequestPojo friendRequest = friendsRequestMapper.selectOneByExample(fre);
 		if (friendRequest == null) {
 			// 2. 如果不是你的好友，并且好友记录没有添加，则新增好友请求记录
 			String requestId = sid.nextShort();
 			
-			FriendsRequest request = new FriendsRequest();
+			FriendsRequestPojo request = new FriendsRequestPojo();
 			request.setId(requestId);
 			request.setSendUserId(myUserId);
 			request.setAcceptUserId(friend.getId());
@@ -196,7 +199,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void deleteFriendRequest(String sendUserId, String acceptUserId) {
-		Example fre = new Example(FriendsRequest.class);
+		Example fre = new Example(FriendsRequestPojo.class);
 		Criteria frc = fre.createCriteria();
 		frc.andEqualTo("sendUserId", sendUserId);
 		frc.andEqualTo("acceptUserId", acceptUserId);
@@ -223,13 +226,13 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	private void saveFriends(String sendUserId, String acceptUserId) {
-		MyFriends myFriends = new MyFriends();
+	public void saveFriends(String sendUserId, String acceptUserId) {
+		MyFriendsPojo myFriendsPojo = new MyFriendsPojo();
 		String recordId = sid.nextShort();
-		myFriends.setId(recordId);
-		myFriends.setMyFriendUserId(acceptUserId);
-		myFriends.setMyUserId(sendUserId);
-		myFriendsMapper.insert(myFriends);
+		myFriendsPojo.setId(recordId);
+		myFriendsPojo.setMyFriendUserId(acceptUserId);
+		myFriendsPojo.setMyUserId(sendUserId);
+		myFriendsMapper.insert(myFriendsPojo);
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -243,7 +246,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String saveMsg(ChatMsg chatMsg) {
 		
-		ChatMsg msgDB = new ChatMsg();
+		ChatMsgPojo msgDB = new ChatMsgPojo();
 		String msgId = sid.nextShort();
 		msgDB.setId(msgId);
 		msgDB.setAcceptUserId(chatMsg.getReceiverId());
@@ -265,14 +268,14 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
-	public List<ChatMsg> getUnReadMsgList(String acceptUserId) {
+	public List<ChatMsgPojo> getUnReadMsgList(String acceptUserId) {
 		
 		Example chatExample = new Example(ChatMsg.class);
 		Criteria chatCriteria = chatExample.createCriteria();
 		chatCriteria.andEqualTo("signFlag", 0);
 		chatCriteria.andEqualTo("acceptUserId", acceptUserId);
 		
-		List<ChatMsg> result = chatMsgMapper.selectByExample(chatExample);
+		List<ChatMsgPojo> result = chatMsgMapper.selectByExample(chatExample);
 		
 		return result;
 	}

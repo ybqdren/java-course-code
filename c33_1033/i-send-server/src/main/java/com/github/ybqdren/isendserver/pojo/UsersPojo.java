@@ -3,7 +3,7 @@ package com.github.ybqdren.isendserver.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class Users {
+public class UsersPojo {
     /**
      * 唯一标识，方便后面分库分表时使用
      */

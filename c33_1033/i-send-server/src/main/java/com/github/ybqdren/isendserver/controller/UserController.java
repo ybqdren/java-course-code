@@ -3,8 +3,8 @@ package com.github.ybqdren.isendserver.controller;
 
 import com.github.ybqdren.isendserver.enums.OperatorFriendRequestTypeEnum;
 import com.github.ybqdren.isendserver.enums.SearchFriendsStatusEnum;
-import com.github.ybqdren.isendserver.pojo.ChatMsg;
-import com.github.ybqdren.isendserver.pojo.Users;
+import com.github.ybqdren.isendserver.pojo.ChatMsgPojo;
+import com.github.ybqdren.isendserver.pojo.UsersPojo;
 import com.github.ybqdren.isendserver.pojo.bo.UsersBO;
 import com.github.ybqdren.isendserver.pojo.vo.MyFriendsVO;
 import com.github.ybqdren.isendserver.pojo.vo.UsersVO;
@@ -38,7 +38,7 @@ public class UserController {
 	 * @Description: 用户注册/登录
 	 */
 	@PostMapping("/registOrLogin")
-	public IMoocJSONResult registOrLogin(@RequestBody Users user) throws Exception {
+	public IMoocJSONResult registOrLogin(@RequestBody UsersPojo user) throws Exception {
 		
 		// 0. 判断用户名和密码不能为空
 		if (StringUtils.isBlank(user.getUsername()) 
@@ -48,7 +48,7 @@ public class UserController {
 		
 		// 1. 判断用户名是否存在，如果存在就登录，如果不存在则注册
 		boolean usernameIsExist = userService.queryUsernameIsExist(user.getUsername());
-		Users userResult = null;
+		UsersPojo userResult = null;
 		if (usernameIsExist) {
 			// 1.1 登录
 			userResult = userService.queryUserForLogin(user.getUsername(), 
@@ -96,12 +96,12 @@ public class UserController {
 		String thumpImgUrl = arr[0] + thump + arr[1];
 		
 		// 更细用户头像
-		Users user = new Users();
+		UsersPojo user = new UsersPojo();
 		user.setId(userBO.getUserId());
 		user.setFaceImage(thumpImgUrl);
 		user.setFaceImageBig(url);
 		
-		Users result = userService.updateUserInfo(user);
+		UsersPojo result = userService.updateUserInfo(user);
 		
 		return IMoocJSONResult.ok(result);
 	}
@@ -112,11 +112,11 @@ public class UserController {
 	@PostMapping("/setNickname")
 	public IMoocJSONResult setNickname(@RequestBody UsersBO userBO) throws Exception {
 		
-		Users user = new Users();
+		UsersPojo user = new UsersPojo();
 		user.setId(userBO.getUserId());
 		user.setNickname(userBO.getNickname());
 		
-		Users result = userService.updateUserInfo(user);
+		UsersPojo result = userService.updateUserInfo(user);
 		
 		return IMoocJSONResult.ok(result);
 	}
@@ -139,7 +139,7 @@ public class UserController {
 		// 前置条件 - 3. 搜索的朋友已经是你的好友，返回[该用户已经是你的好友]
 		Integer status = userService.preconditionSearchFriends(myUserId, friendUsername);
 		if (status == SearchFriendsStatusEnum.SUCCESS.status) {
-			Users user = userService.queryUserInfoByUsername(friendUsername);
+			UsersPojo user = userService.queryUserInfoByUsername(friendUsername);
 			UsersVO userVO = new UsersVO();
 			BeanUtils.copyProperties(user, userVO);
 			return IMoocJSONResult.ok(userVO);
@@ -255,7 +255,7 @@ public class UserController {
 		}
 		
 		// 查询列表
-		List<ChatMsg> unreadMsgList = userService.getUnReadMsgList(acceptUserId);
+		List<ChatMsgPojo> unreadMsgList = userService.getUnReadMsgList(acceptUserId);
 		
 		return IMoocJSONResult.ok(unreadMsgList);
 	}
