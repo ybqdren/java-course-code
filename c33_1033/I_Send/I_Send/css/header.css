@@ -1,13 +1,11 @@
-/** 顶部标题 */
-.title{
+.title {
 	background-color: #EC971F;
 }
-.title-color{
+
+.title-color {
 	color: white;
 }
 
-/** 底部菜单栏 */
-.mui-bar-tab .mui-tab-item.mui-active{
+.mui-bar-tab .mui-tab-item.mui-active {
 	color: #EC971F;
 }
-
