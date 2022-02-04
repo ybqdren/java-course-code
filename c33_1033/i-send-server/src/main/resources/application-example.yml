@@ -24,8 +24,6 @@ fdfs:
     width: 80
     height: 80
 
-
-
 # config: mybatis
 mybatis:
   type-aliases-package: com.github.ybqdren.isendserver.pojo
