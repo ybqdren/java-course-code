@@ -8,3 +8,8 @@ server:
 logging:
   level:
     com.github.ybqdren.isendserver: debug
+
+# choice env
+spring:
+  profiles:
+    active: dev
