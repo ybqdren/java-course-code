@@ -1,10 +1,10 @@
 package com.github.ybqdren.org.n3r.idworker.strategy;
 
-import org.n3r.idworker.WorkerIdStrategy;
-import org.n3r.idworker.utils.HttpReq;
-import org.n3r.idworker.utils.Ip;
-import org.n3r.idworker.utils.Props;
-import org.n3r.idworker.utils.Utils;
+import com.github.ybqdren.org.n3r.idworker.WorkerIdStrategy;
+import com.github.ybqdren.org.n3r.idworker.utils.HttpReq;
+import com.github.ybqdren.org.n3r.idworker.utils.Ip;
+import com.github.ybqdren.org.n3r.idworker.utils.Props;
+import com.github.ybqdren.org.n3r.idworker.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

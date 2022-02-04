@@ -1,6 +1,7 @@
 package com.github.ybqdren.org.n3r.idworker;
 
-import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
+
+import com.github.ybqdren.org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
 
 public class Id {
     private static WorkerIdStrategy workerIdStrategy;
