@@ -1,3 +1,8 @@
+# choice env
+spring:
+  profiles:
+    active: dev
+
 # config: server port
 server:
   port: 8906
@@ -9,7 +14,3 @@ logging:
   level:
     com.github.ybqdren.isendserver: debug
 
-# choice env
-spring:
-  profiles:
-    active: dev
