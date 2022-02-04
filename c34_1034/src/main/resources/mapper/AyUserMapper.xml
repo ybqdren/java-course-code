@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.ybqdren.dao.AyUserDao">
+    <sql id="userField">
+        a.id AS "id" ,
+        a.name AS "name",
+        a.password AS "password"
+    </sql>
+
+    <!-- 获取所有用户 -->
+    <select id="findAll" resultType="com.github.ybqdren.pojo.AyUser">
+        select
+            <include refid="userField" />
+            from ay_user as a
+    </select>
+</mapper>
