@@ -20,10 +20,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class WSServer {
-
-	@Value("${my.netty.port}")
-	private int nettyPort;
-
 	private static class SingletionWSServer {
 		static final WSServer instance = new WSServer();
 	}
@@ -47,6 +43,7 @@ public class WSServer {
 	}
 	
 	public void start() {
+		int nettyPort = 8089;
 		this.future = server.bind(nettyPort);
 		log.info("netty websocket server 启动完毕...端口号为 {}" , nettyPort);
 	}

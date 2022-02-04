@@ -56,7 +56,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			
 			// 测试
 			for (Channel c : users) {
-				System.out.println(c.id().asLongText());
+				log.info("{}", c.id().asLongText());
 			}
 			UserChannelRel.output();
 		} else if (action == MsgActionEnum.CHAT.type) {
@@ -106,7 +106,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				}
 			}
 			
-			System.out.println(msgIdList.toString());
+			log.info("{}", msgIdList.toString());
 			
 			if (msgIdList != null && !msgIdList.isEmpty() && msgIdList.size() > 0) {
 				// 批量签收
