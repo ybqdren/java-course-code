@@ -1,7 +1,8 @@
 package com.github.ybqdren.isendserver.dao;
 
-import com.imooc.pojo.ChatMsg;
-import com.imooc.utils.MyMapper;
+
+import com.github.ybqdren.isendserver.pojo.ChatMsg;
+import com.github.ybqdren.isendserver.utils.MyMapper;
 
 public interface ChatMsgMapper extends MyMapper<ChatMsg> {
 }

@@ -1,7 +1,8 @@
 package com.github.ybqdren.isendserver.dao;
 
-import com.imooc.pojo.Users;
-import com.imooc.utils.MyMapper;
+
+import com.github.ybqdren.isendserver.pojo.Users;
+import com.github.ybqdren.isendserver.utils.MyMapper;
 
 public interface UsersMapper extends MyMapper<Users> {
 }

@@ -1,9 +1,10 @@
 package com.github.ybqdren.isendserver.dao;
 
-import com.imooc.pojo.Users;
-import com.imooc.pojo.vo.FriendRequestVO;
-import com.imooc.pojo.vo.MyFriendsVO;
-import com.imooc.utils.MyMapper;
+
+import com.github.ybqdren.isendserver.pojo.Users;
+import com.github.ybqdren.isendserver.pojo.vo.FriendRequestVO;
+import com.github.ybqdren.isendserver.pojo.vo.MyFriendsVO;
+import com.github.ybqdren.isendserver.utils.MyMapper;
 
 import java.util.List;
 
