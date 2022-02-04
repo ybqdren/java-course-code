@@ -1,0 +1,42 @@
+spring:
+  # config: jdbc-mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${ip}:${host}/${database}}?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: ${username}
+    password: ${password}
+
+    # config: hikari
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 600000
+      pool-name: DatebookHikariCP
+      max-lifetime: 28740000
+      connection-test-query: SELECT 1
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image:
+    width: 80
+    height: 80
+
+
+
+# config: mybatis
+mybatis:
+  type-aliases-package: com.github.ybqdren.isendserver.pojo
+  mapper-locations: class:mapper/*.xml
+mapper:
+  mappers: com.github.ybqdren.isendserver.utils.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+# config: pagehelper
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql

@@ -92,6 +92,8 @@
 				var username = document.getElementById("username");
 				var txt_password = document.getElementById("txt_password");
 				
+				console.log(userInfo + "~" + username);
+				
 				userform.addEventListener("submit", function(e){
 					// 判断用户名是否为空，如果为空则让其获得焦点
 					if (!app.isNotNull(username.value)) {
@@ -112,6 +114,10 @@
 						
 						// 获取每台手机的唯一cid
 						var cid = plus.push.getClientInfo().clientid;
+						console.log("cid ~" + cid);
+						
+						console.log("app.serverUrl: " + app.serverUrl);
+						
 						// 与后端联调
 						mui.ajax(app.serverUrl + "/u/registOrLogin",{
 							data:{
@@ -140,6 +146,10 @@
 								} else {
 									app.showToast(data.msg, "error");
 								}
+							},
+							error:function(xhr , type , errorThrown){
+								// Todo 异常处理
+								console.log("连接异常 ~ " + type + "~" + errorThrown + "~" + xhr);
 							}
 						});
 						
