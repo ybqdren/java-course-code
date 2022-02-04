@@ -4,6 +4,13 @@ import org.apache.commons.codec.binary.Base64;
 
 import java.security.MessageDigest;
 
+/**
+ * <h1> MD5 编码解码工具类 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public class MD5Utils {
 
 	/**

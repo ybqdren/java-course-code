@@ -5,13 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
+ * <h1> springboot 启动类 </h1>
  * @author zhao wen
- * @since 1.0.0
+ * @since 0.0.1
  **/
 
 @MapperScan(basePackages = {"com.github.ybqdren.isendserver.dao"})
 @SpringBootApplication
-//@ComponentScan(basePackages = {"com.github.ybqdren.isendserver"}) // 扫描所有需要的包，包括一些自用的工具类包所在的路径
 public class ISendServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ISendServerApplication.class, args);

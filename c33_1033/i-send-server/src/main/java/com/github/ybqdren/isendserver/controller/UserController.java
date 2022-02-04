@@ -24,8 +24,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+/**
+ * <h1> 用户操作接口 </h1>
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 @RestController
-@RequestMapping("u")
+@RequestMapping("user")
 public class UserController {
 	
 	@Autowired

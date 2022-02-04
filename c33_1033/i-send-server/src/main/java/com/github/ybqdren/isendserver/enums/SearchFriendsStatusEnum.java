@@ -1,9 +1,14 @@
 package com.github.ybqdren.isendserver.enums;
 
+
 /**
- * 
- * @Description: 添加好友前置状态 枚举
- */
+ * <h1> 添加好友前置状态 枚举 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+
 public enum SearchFriendsStatusEnum {
 	
 	SUCCESS(0, "OK"),

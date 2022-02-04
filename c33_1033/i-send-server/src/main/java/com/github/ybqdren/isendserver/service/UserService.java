@@ -9,6 +9,13 @@ import com.github.ybqdren.isendserver.pojo.vo.MyFriendsVO;
 
 import java.util.List;
 
+/**
+ * <h1> service 用户服务接口 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public interface UserService {
 
 	/**

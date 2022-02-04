@@ -1,26 +1,17 @@
 package com.github.ybqdren.isendserver.pojo.bo;
 
+import lombok.Data;
+
+/**
+ * <h1> bo 用户信息 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+@Data
 public class UsersBO {
     private String userId;
     private String faceData;
     private String nickname;
-    
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getFaceData() {
-		return faceData;
-	}
-	public void setFaceData(String faceData) {
-		this.faceData = faceData;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 }

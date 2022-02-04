@@ -4,9 +4,14 @@ import io.netty.channel.Channel;
 
 import java.util.HashMap;
 
+
 /**
- * @Description: 用户id和channel的关联关系处理
- */
+ * <h1> netty 用户id和channel的关联关系处理 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public class UserChannelRel {
 
 	private static HashMap<String, Channel> manager = new HashMap<>();

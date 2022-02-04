@@ -14,6 +14,15 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.HashMap;
 
+
+/**
+ * <h1> 二维码生成工具类 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+
 @Component
 public class QRCodeUtils {
 	

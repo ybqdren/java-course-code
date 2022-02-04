@@ -2,6 +2,13 @@ package com.github.ybqdren.isendserver.netty;
 
 import java.io.Serializable;
 
+/**
+ * <h1> netty 用户发送一次消息 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public class ChatMsg implements Serializable {
 
 	private static final long serialVersionUID = 3611169682695799175L;

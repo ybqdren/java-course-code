@@ -13,6 +13,14 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+
+/**
+ * <h1> fastdfs 客户端工具类 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 @Component
 public class FastDFSClient {
 

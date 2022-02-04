@@ -1,9 +1,13 @@
 package com.github.ybqdren.isendserver.enums;
 
+
 /**
- * 
- * @Description: 消息签收状态 枚举
- */
+ * <h1> 消息签收状态 枚举 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public enum MsgSignFlagEnum {
 	
 	unsign(0, "未签收"),

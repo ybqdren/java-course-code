@@ -34,8 +34,18 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * <h1> service 用户服务 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 @Service
 public class UserServiceImpl implements UserService {
+
+	private static Sid sid = new Sid();
 
 	@Autowired
 	private UsersMapper userMapper;
@@ -51,9 +61,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private ChatMsgMapper chatMsgMapper;
-	
-	@Autowired
-	private Sid sid;
 	
 	@Autowired
 	private QRCodeUtils qrCodeUtils;

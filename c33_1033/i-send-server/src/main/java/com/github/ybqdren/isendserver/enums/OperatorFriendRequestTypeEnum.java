@@ -1,9 +1,14 @@
 package com.github.ybqdren.isendserver.enums;
 
+
 /**
- * 
- * @Description: 忽略或者通过 好友请求的枚举
- */
+ * <h1> 忽略或者通过 好友请求的枚举 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+
 public enum OperatorFriendRequestTypeEnum {
 	
 	IGNORE(0, "忽略"),

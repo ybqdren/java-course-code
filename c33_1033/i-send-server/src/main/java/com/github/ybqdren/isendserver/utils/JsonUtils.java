@@ -7,8 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 /**
- * @Description: 自定义响应结构, 转换类
- */
+ * <h1> json 信息处理 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public class JsonUtils {
 
     // 定义jackson对象

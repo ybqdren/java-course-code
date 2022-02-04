@@ -12,16 +12,22 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
- * @Description: 处理消息的handler
- * TextWebSocketFrame： 在netty中，是用于为websocket专门处理文本的对象，frame是消息的载体
- */
+ * <h1> netty 处理消息的handler </h1>
+ *
+ * <p> TextWebSocketFrame： 在netty中，是用于为websocket专门处理文本的对象，frame是消息的载体 </p>
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+
+@Slf4j
 public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
 	// 用于记录和管理所有客户端的channle
@@ -38,6 +44,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 
 		// 1. 获取客户端发来的消息
 		DataContent dataContent = JsonUtils.jsonToPojo(content, DataContent.class);
+		log.info("Client Message : {}" , dataContent.toString());
+
 		Integer action = dataContent.getAction();
 		// 2. 判断消息类型，根据不同的类型来处理不同的业务
 
@@ -107,7 +115,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			
 		} else if (action == MsgActionEnum.KEEPALIVE.type) {
 			//  2.4  心跳类型的消息
-			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
+			log.info("收到来自channel为[{}]的心跳包...", currentChannel);
 		}
 	}
 	
@@ -124,7 +132,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
 		
 		String channelId = ctx.channel().id().asShortText();
-		System.out.println("客户端被移除，channelId为：" + channelId);
+		log.info("客户端被移除，channelId为：{}" , channelId);
 		
 		// 当触发handlerRemoved，ChannelGroup会自动移除对应客户端的channel
 		users.remove(ctx.channel());

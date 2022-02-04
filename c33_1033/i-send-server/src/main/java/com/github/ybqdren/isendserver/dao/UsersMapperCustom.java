@@ -8,6 +8,11 @@ import com.github.ybqdren.isendserver.utils.MyMapper;
 
 import java.util.List;
 
+/**
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 public interface UsersMapperCustom extends MyMapper<UsersPojo> {
 	
 	public List<FriendRequestVO> queryFriendRequestList(String acceptUserId);

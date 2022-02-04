@@ -1,10 +1,21 @@
 package com.github.ybqdren.isendserver.pojo;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+
+/**
+ * <h1> pojo 记录一次聊天中的发送方和接收方 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+ @Data
 @Table(name = "friends_request")
 public class FriendsRequestPojo {
     @Id
@@ -21,64 +32,4 @@ public class FriendsRequestPojo {
      */
     @Column(name = "request_date_time")
     private Date requestDateTime;
-
-    /**
-     * @return id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * @return send_user_id
-     */
-    public String getSendUserId() {
-        return sendUserId;
-    }
-
-    /**
-     * @param sendUserId
-     */
-    public void setSendUserId(String sendUserId) {
-        this.sendUserId = sendUserId;
-    }
-
-    /**
-     * @return accept_user_id
-     */
-    public String getAcceptUserId() {
-        return acceptUserId;
-    }
-
-    /**
-     * @param acceptUserId
-     */
-    public void setAcceptUserId(String acceptUserId) {
-        this.acceptUserId = acceptUserId;
-    }
-
-    /**
-     * 获取发送请求的事件
-     *
-     * @return request_date_time - 发送请求的事件
-     */
-    public Date getRequestDateTime() {
-        return requestDateTime;
-    }
-
-    /**
-     * 设置发送请求的事件
-     *
-     * @param requestDateTime 发送请求的事件
-     */
-    public void setRequestDateTime(Date requestDateTime) {
-        this.requestDateTime = requestDateTime;
-    }
-}
+ }

@@ -9,6 +9,13 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * <h1> 文件上传工具类 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
 @Service
 public class FileUtils {
 	/**

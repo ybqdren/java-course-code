@@ -5,6 +5,12 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
+/**
+ * <h1> vo 用户信息 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
 
 @Data
 public class UsersVO {

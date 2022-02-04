@@ -4,6 +4,11 @@ server:
   tomcat:
     uri-encoding: utf-8
 
+# config: netty port
+my:
+  netty:
+    port: 8089
+
 # config: log
 logging:
   level:

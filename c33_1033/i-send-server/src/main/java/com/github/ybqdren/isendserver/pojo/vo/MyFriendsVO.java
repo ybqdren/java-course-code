@@ -1,35 +1,18 @@
 package com.github.ybqdren.isendserver.pojo.vo;
 
+import lombok.Data;
+
+/**
+ * <h1> vo 好友信息 </h1>
+ *
+ * @author zhao wen
+ * @since 0.0.1
+ **/
+
+@Data
 public class MyFriendsVO {
     private String friendUserId;
     private String friendUsername;
     private String friendFaceImage;
     private String friendNickname;
-    
-	public String getFriendUserId() {
-		return friendUserId;
-	}
-	public void setFriendUserId(String friendUserId) {
-		this.friendUserId = friendUserId;
-	}
-	public String getFriendUsername() {
-		return friendUsername;
-	}
-	public void setFriendUsername(String friendUsername) {
-		this.friendUsername = friendUsername;
-	}
-	public String getFriendFaceImage() {
-		return friendFaceImage;
-	}
-	public void setFriendFaceImage(String friendFaceImage) {
-		this.friendFaceImage = friendFaceImage;
-	}
-	public String getFriendNickname() {
-		return friendNickname;
-	}
-	public void setFriendNickname(String friendNickname) {
-		this.friendNickname = friendNickname;
-	}
-    
-    
 }
