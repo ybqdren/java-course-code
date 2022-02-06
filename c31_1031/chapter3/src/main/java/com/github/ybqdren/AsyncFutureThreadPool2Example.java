@@ -7,8 +7,7 @@ import java.util.concurrent.*;
  * @author zhao wen
  * @since 0.0.1
  * <p>
- *  代码0创建了一个线程池，
- *  代码2添加异步任务到线程池，这里我们是调用了线程池的execute方法把futureTask提交到线程池的
+ *   代码1调用了线程池的submit方法提交了一个任务到线程池，然后返回了一个 futureTask 对象。
  * </p>
  *
  **/
