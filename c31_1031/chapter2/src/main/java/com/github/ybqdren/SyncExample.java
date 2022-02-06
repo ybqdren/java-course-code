@@ -1,4 +1,4 @@
-package com.github.ybqdren.chapter2;
+package com.github.ybqdren;
 
 /**
  * @author Wen(Joan) Zhao
