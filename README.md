@@ -75,6 +75,8 @@ c35_1035   [图书] [《Java 高并发核心编程 卷2》](c35_1035) by 尼恩
 
 c36_1036   [图书] [《微服务设计模式》](c36_1036) by Chris Richardson （克里斯 理查森）
 
+c37_1037   [图书] [《Java高并发核心编程 卷1：NIO、Netty、Redis、Zookeeper》](c37_1037) by 尼恩
+
 ...
 
 cblog_test_2022 [博客学习代码收集](cblog_test_2022)
