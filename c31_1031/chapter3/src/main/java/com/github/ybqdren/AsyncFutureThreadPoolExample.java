@@ -1,22 +1,29 @@
 package com.github.ybqdren;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
- * <h1> {@link  FutureTask} 测试</h1>
+ * <h1> 将 FutureTask 提交到线程池来执行 </h1>
  * @author zhao wen
  * @since 0.0.1
  * <p>
- *     ● 在上述代码中，doSomethingA和doSomethingB方法都是有返回值的任务，main函数内代码1创建了一个异步任务futureTask，其内部执行任务doSomethingA。
- *
- *     ● 代码2则创建了一个线程，以futureTask为执行任务并启动；代码3使用main线程执行任务doSomethingB，这时候任务doSomethingB和doSomethingA是并发运行的，等main函数运行doSomethingB完毕后，执行代码4同步等待doSomethingA任务完成，然后代码5打印两个任务的执行结果。
- *
- *     ● 如上可知使用FutureTask可以获取到异步任务的结果。
- *
+ *  代码0创建了一个线程池，
+ *  代码2添加异步任务到线程池，这里我们是调用了线程池的execute方法把futureTask提交到线程池的
  * </p>
+ *
  **/
-public class AsyncFutureExample {
+public class AsyncFutureThreadPoolExample {
+    /** 0 自定义线程池 */
+    private final static int AVALIABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+
+    private final static ThreadPoolExecutor POOL_EXECUTOR =
+            new ThreadPoolExecutor(AVALIABLE_PROCESSORS * 2 ,
+                                                1024 ,
+                                                2000,
+                                                TimeUnit.MINUTES ,
+                                                new LinkedBlockingQueue<>(5) ,
+                                                new ThreadPoolExecutor.CallerRunsPolicy());
+
     public static String doSomethingA(){
         try{
             Thread.sleep(2000);
@@ -60,8 +67,7 @@ public class AsyncFutureExample {
         });
 
         // 2. 开启异步单元执行任务 A
-        Thread thread = new Thread(futureTask , "threadA");
-        thread.start();
+        POOL_EXECUTOR.execute(futureTask);
 
         // 3. 执行任务 B
         String taskBResult = doSomethingB();
