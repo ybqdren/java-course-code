@@ -1,4 +1,6 @@
 # java-course-code
+[![wakatime](https://wakatime.com/badge/user/e1661f37-5d4a-4a32-8cda-0f1d65c01658/project/f1044300-a9a3-4d46-aead-59867cb67222.svg)](https://wakatime.com/badge/user/e1661f37-5d4a-4a32-8cda-0f1d65c01658/project/f1044300-a9a3-4d46-aead-59867cb67222)
+
 java 课程、书籍、教程练习代码
 
 ----
