@@ -7,7 +7,6 @@ import java.util.Arrays;
  *
  * @Author zhao wen
  * @Version 0.0.1
- * @Date 2022/3/14
  * https://leetcode-cn.com/problems/coin-change/
  **/
 public class p322 {
