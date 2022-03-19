@@ -1,8 +1,0 @@
-# mysql db
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/test
-    username: root
-    password: 666666
-  jpa:
-    generate-ddl: true
